@@ -1,0 +1,174 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/images/arrow.png",
+                "type": "image",
+                "key": "arrow"
+            },
+            {
+                "url": "assets/images/Background.png",
+                "type": "image",
+                "key": "Background"
+            },
+            {
+                "url": "assets/images/Balls/Ball-1.png",
+                "type": "image",
+                "key": "ball_1"
+            },
+            {
+                "url": "assets/images/Balls/Ball-2.png",
+                "type": "image",
+                "key": "ball_2"
+            },
+            {
+                "url": "assets/images/Balls/Ball-3.png",
+                "type": "image",
+                "key": "ball_3"
+            },
+            {
+                "url": "assets/images/Balls/Ball-4.png",
+                "type": "image",
+                "key": "ball_4"
+            },
+            {
+                "url": "assets/images/Balls/Ball-5.png",
+                "type": "image",
+                "key": "ball_5"
+            },
+            {
+                "url": "assets/images/Balls/Ball-6.png",
+                "type": "image",
+                "key": "ball_6"
+            },
+            {
+                "url": "assets/images/Balls/Ball-7.png",
+                "type": "image",
+                "key": "ball_7"
+            },
+            {
+                "url": [
+                    "assets/sounds/ballHitting.mp3"
+                ],
+                "type": "audio",
+                "key": "ballHitting"
+            },
+            {
+                "url": "assets/images/Button.png",
+                "type": "image",
+                "key": "Button"
+            },
+            {
+                "url": [
+                    "assets/sounds/Click.mp3"
+                ],
+                "type": "audio",
+                "key": "Click"
+            },
+            {
+                "url": "assets/images/Winning screen/Congratulation-text.png",
+                "type": "image",
+                "key": "Congratulation-text"
+            },
+            {
+                "url": "src/scenes/Level.js",
+                "type": "sceneFile",
+                "key": "Level"
+            },
+            {
+                "url": "assets/images/Level-Board.png",
+                "type": "image",
+                "key": "Level-Board"
+            },
+            {
+                "url": "src/scripts/LevelManager.js",
+                "type": "script",
+                "key": "LevelManager"
+            },
+            {
+                "url": "src/scenes/LevelUp.js",
+                "type": "sceneFile",
+                "key": "LevelUp"
+            },
+            {
+                "url": [
+                    "assets/sounds/LevelWin.mp3"
+                ],
+                "type": "audio",
+                "key": "LevelWin"
+            },
+            {
+                "url": "src/scenes/Loading.js",
+                "type": "sceneFile",
+                "key": "Loading"
+            },
+            {
+                "url": "assets/images/multiply-icon.png",
+                "type": "image",
+                "key": "multiply-icon"
+            },
+            {
+                "url": "assets/images/Winning screen/party-popper.png",
+                "type": "image",
+                "key": "party-popper"
+            },
+            {
+                "url": "assets/images/Retry-icon.png",
+                "type": "image",
+                "key": "Retry-icon"
+            },
+            {
+                "url": "src/scripts/SocketManager.js",
+                "type": "script",
+                "key": "SocketManager"
+            },
+            {
+                "url": "src/scripts/SoundManager.js",
+                "type": "script",
+                "key": "SoundManager"
+            },
+            {
+                "url": "assets/images/Table.png",
+                "type": "image",
+                "key": "Table"
+            },
+            {
+                "url": "src/scripts/TweenManager.js",
+                "type": "script",
+                "key": "TweenManager"
+            },
+            {
+                "url": "assets/images/Balls/W-Ball.png",
+                "type": "image",
+                "key": "W-Ball"
+            },
+            {
+                "url": "assets/images/Wholes/Whole 1.png",
+                "type": "image",
+                "key": "whole_1"
+            },
+            {
+                "url": "assets/images/Wholes/Whole-2.png",
+                "type": "image",
+                "key": "whole_2"
+            },
+            {
+                "url": "assets/images/Winning screen/winning-bg.png",
+                "type": "image",
+                "key": "winning-bg"
+            },
+            {
+                "url": "assets/images/Winning screen/you-won.png",
+                "type": "image",
+                "key": "you-won"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}

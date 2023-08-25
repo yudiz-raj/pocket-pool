@@ -1,0 +1,131 @@
+{
+    "id": "17726975-bee3-4a4a-b183-016c221d2f1f",
+    "sceneType": "SCENE",
+    "settings": {
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Loading",
+        "borderWidth": 1920,
+        "borderHeight": 1080
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "8294b855-6ff7-47d6-9e1a-1f140deb8b06",
+            "label": "body",
+            "components": [],
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "c7f9eb1c-c2eb-4bb8-b37a-7569a442b627",
+                    "label": "rectangle_1",
+                    "components": [],
+                    "x": 960,
+                    "y": 540,
+                    "angle": 90,
+                    "isFilled": true,
+                    "fillColor": "#4dd75a",
+                    "width": 1080,
+                    "height": 1920
+                },
+                {
+                    "type": "Text",
+                    "id": "9378e4aa-2c16-422d-a3f2-6749ddb5984d",
+                    "label": "heading",
+                    "components": [],
+                    "x": 960,
+                    "y": 277,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Pool",
+                    "align": "center",
+                    "fontFamily": "GochiHand",
+                    "fontSize": "300px",
+                    "shadow.offsetX": 15,
+                    "shadow.offsetY": 15,
+                    "shadow.stroke": true,
+                    "shadow.fill": true,
+                    "shadow.color": "#525252ff"
+                },
+                {
+                    "type": "Text",
+                    "id": "e16d6ff3-602c-4c54-9331-17ea36d06be4",
+                    "label": "playButton",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 960,
+                    "y": 1000,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Tap to Play ",
+                    "align": "center",
+                    "fontFamily": "Alfa Slab One",
+                    "fontSize": "80px",
+                    "shadow.offsetX": 15,
+                    "shadow.offsetY": 15,
+                    "shadow.color": "#525252ff"
+                },
+                {
+                    "type": "Container",
+                    "id": "a278302b-8c4f-41b6-8753-2f77ce004aec",
+                    "label": "container_logo",
+                    "components": [],
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "b6b9b74a-8272-4805-bacf-bda51c06b93a",
+                            "label": "logoBall",
+                            "components": [],
+                            "texture": {
+                                "key": "logoBall"
+                            },
+                            "x": 964,
+                            "y": 713,
+                            "scaleX": 1.5,
+                            "scaleY": 1.5
+                        },
+                        {
+                            "type": "Image",
+                            "id": "eba84dd0-1908-4293-8514-75e06cadbe56",
+                            "label": "logoStick",
+                            "components": [],
+                            "texture": {
+                                "key": "logoStick"
+                            },
+                            "x": 1002,
+                            "y": 645,
+                            "scaleX": 3,
+                            "scaleY": 3,
+                            "angle": 10
+                        },
+                        {
+                            "type": "Ellipse",
+                            "id": "1d9f8ecd-009b-4ff6-ae7f-e50568afeb84",
+                            "label": "ellipse_1",
+                            "components": [],
+                            "x": 944,
+                            "y": 982,
+                            "scaleX": 0.5,
+                            "scaleY": 0.2,
+                            "angle": 10,
+                            "isFilled": true,
+                            "fillColor": "#f4dd7b",
+                            "strokeColor": "#4b433a",
+                            "lineWidth": 20,
+                            "isStroked": true,
+                            "width": 120,
+                            "height": 128
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 3
+    }
+}
