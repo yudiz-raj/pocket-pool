@@ -1,6 +1,12 @@
 {
     "section1": {
-        "files": []
+        "files": [
+            {
+                "url": "assets/images/preload-screen.png",
+                "type": "image",
+                "key": "preload-screen"
+            }
+        ]
     },
     "meta": {
         "app": "Phaser Editor 2D - Asset Pack Editor",

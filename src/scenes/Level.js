@@ -1,4 +1,3 @@
-
 // You can write more code here
 let interactiveArea;
 /* START OF COMPILED CODE */
@@ -9,8 +8,8 @@ class Level extends Phaser.Scene {
 		super("Level");
 
 		/* START-USER-CTR-CODE */
-		// Write your code here.
-		/* END-USER-CTR-CODE */
+    // Write your code here. 
+    /* END-USER-CTR-CODE */
 	}
 
 	/** @returns {void} */
@@ -142,9 +141,9 @@ class Level extends Phaser.Scene {
 		this.levelNumber = levelNumber;
 		this.table = table;
 		this.container_holes = container_holes;
-		this.container_retry = container_retry;
 		this.retryButton = retryButton;
 		this.retryCount = retryCount;
+		this.container_retry = container_retry;
 		this.arrow = arrow;
 
 		this.events.emit("scene-awake");
@@ -158,270 +157,312 @@ class Level extends Phaser.Scene {
 	table;
 	/** @type {Phaser.GameObjects.Container} */
 	container_holes;
-	/** @type {Phaser.GameObjects.Container} */
-	container_retry;
 	/** @type {Phaser.GameObjects.Image} */
 	retryButton;
 	/** @type {Phaser.GameObjects.Text} */
 	retryCount;
+	/** @type {Phaser.GameObjects.Container} */
+	container_retry;
 	/** @type {Phaser.GameObjects.Image} */
 	arrow;
 
 	/* START-USER-CODE */
 
-	// Write your code here
+  // Write your code here
 
-	create() {
+  create() {
+    this.editorCreate();
 
-		this.editorCreate();
+    this.oLevelManager = new LevelManager(this);
+    this.oSoundManager = new SoundManager(this);
+    this.oTweenManager = new TweenManager(this);
 
-		this.oLevelManager = new LevelManager(this);
-		this.oSoundManager = new SoundManager(this);
-		this.oTweenManager = new TweenManager(this);
+    this.ballsGroup = this.add.group();
+    this.holesGroup = this.add.group();
+    this.borderGroup = this.add.group();
 
-		// this.oLevelManager.levels();
-		this.oLevelManager.levelHandler(nLevelCount-1);
+    this.levelNumber.setText(nLevelCount);
+    this.retryCount.setText(nRetryCount);
 
-		this.scroll();
+    this.levelSelecter();
+    this.input.keyboard.createCursorKeys();
+    this.input.keyboard.on("keydown", this.handleKeyDown, this);
+    this.scroll();
 
-		let cursors = this.input.keyboard.createCursorKeys();
-		this.input.keyboard.on('keydown', this.handleKeyDown, this);
+    this.retryButton.on("pointerdown", () => {
+      this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
+      if (nRetryCount > 0) {
+        this.oTweenManager.buttonAnimation(this.container_retry);
+        nRetryCount -= 1;
+        this.retryCount.setText(nRetryCount);
+      }
+    });
 
-		this.levelNumber.setText(nLevelCount);
-		this.retryCount.setText(nRetryCount);
-		this.retryButton.setInteractive().on("pointerdown", () => {
-			this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
-			if (nRetryCount > 0) {
-				this.oTweenManager.buttonAnimation(this.container_retry);
-				nRetryCount -= 1;
-				this.retryCount.setText(nRetryCount);
-			}
-		})
+    this.ballsGroup.children.entries.forEach((ball) => {
+      ball.body.setSize(45, 45);
+    });
 
-		this.oLevelManager.ballsGroup.children.entries.forEach((ball) => {
-			ball.body.setSize(55, 55);
-		})
+    this.holesGroup.children.entries.forEach((hole) => {
+      this.physics.add.existing(hole, true);
+      if (hole.texture.key == "whole_1") {
+        hole.body.setSize(40, 60);
+      } else {
+        hole.body.setSize(60, 40);
+      }
+    });
 
-		this.oLevelManager.holesGroup.children.entries.forEach((hole) => {
-			this.physics.add.existing(hole, true);
-			if (hole.texture.key == "whole_1") {
-				hole.body.setSize(40, 70);
-			}
-			else {
-				hole.body.setSize(70, 40);
-			}
-		})
+    this.container_border.list.forEach((border) => {
+      this.physics.add.existing(border, true);
+      if (border.angle != 90) {
+        border.body.setSize(700, 80);
+        border.body.setOffset(0, -7);
+      } else {
+        border.body.setSize(80, 1000);
+        border.body.setOffset(408, -450);
+      }
+      this.borderGroup.add(border);
+    });
 
-		this.container_border.list.forEach((border) => {
+    // IndexBall and border collider
+    this.physics.add.collider(this.indexBall, this.borderGroup, () => {
+      this.indexBall.setScale(1, 1);
+      this.indexBall.setVelocity(0, 0);
+      this.input.keyboard.enabled = true;
+      interactiveArea.setInteractive();
+    });
 
-			this.physics.add.existing(border, true);
-			if (border.angle != 90) {
-				border.body.setSize(700, 80);
-				border.body.setOffset(0, -7);
-			}
-			else {
-				border.body.setSize(80, 1000);
-				border.body.setOffset(408, -450);
-			}
-			this.oLevelManager.borderGroup.add(border);
+    // IndexBall and ball collider
+    this.physics.add.collider(
+      this.indexBall,
+      this.ballsGroup,
+      (indexBall, ball) => {
+        this.indexBall.setVelocity(0, 0);
+        this.oSoundManager.playSound(
+          this.oSoundManager.ballHittingSound,
+          false
+        );
+        this.indexBall.setScale(1, 1);
+        this.input.keyboard.enabled = true;
+        interactiveArea.setInteractive();
+      }
+    );
+    // Ball and ball collider
+    this.physics.add.collider(this.ballsGroup, this.ballsGroup);
+    // Ball and hole collider
+    this.physics.add.collider(this.ballsGroup, this.holesGroup, (number) => {
+      this.ballsGroup.children.entries.forEach((ball) => {
+        if (ball.name == number.name) {
+          ball.destroy();
+        }
+      });
+      if (this.ballsGroup.children.entries.length == 0) {
+        nLevelCount += 1;
+        this.levelHandler();
+      }
+    });
+    //Ball and border collider
+    this.physics.add.collider(this.ballsGroup, this.borderGroup);
+    //IndexBall and holes collider
+    this.physics.add.collider(this.indexBall, this.holesGroup, () => {
+      this.indexBall.setScale(1, 1);
+      this.indexBall.destroy();
+      this.tryAgainImage = this.add
+        .image(971, 500, "Try-again")
+        .setScale(0.8, 0.8);
+      this.oTweenManager.popUpAnimation(this.tryAgainImage);
+    });
 
-		})
+    let shape = this.make.graphics();
+    shape.fillRect(760, 262, 420, 535);
+    const mask = shape.createGeometryMask();
+    this.arrow.setMask(mask);
+  }
 
-		// IndexBall and border collider
-		this.physics.add.collider(this.oLevelManager.indexBall, this.oLevelManager.borderGroup, () => {
-			this.oLevelManager.indexBall.setScale(1, 1);
-			this.oLevelManager.indexBall.setVelocity(0, 0);
-			this.input.keyboard.enabled = true;
-			interactiveArea.setInteractive();
+  levelHandler() {
+    setTimeout(() => {
+      if (nLevelCount == 11) {
+        nLevelCount = 1;
+        this.oSoundManager.playSound(this.oSoundManager.levelWinSound, false);
+        this.scene.stop("Level");
+        this.scene.start("LevelUp");
+      } else {
+        this.scene.restart("Level");
+      }
+    }, 300);
+  }
 
-		});
+  levelSelecter() {
+    let numberOfBalls = Object.keys(
+      this.oLevelManager.aLevel[nLevelCount - 1].oBalls
+    ).length;
+    let numberOfHoles = Object.keys(
+      this.oLevelManager.aLevel[nLevelCount - 1].oHoles
+    ).length;
+    this.ballsData = this.oLevelManager.aLevel[nLevelCount - 1].oBalls;
+    this.holesData = this.oLevelManager.aLevel[nLevelCount - 1].oHoles;
 
-		// IndexBall and ball collider
-		this.physics.add.collider(this.oLevelManager.indexBall, this.oLevelManager.ballsGroup, () => {
-			this.oSoundManager.playSound(this.oSoundManager.ballHittingSound, false);
-			this.oLevelManager.indexBall.setScale(1, 1);
-			this.oLevelManager.indexBall.setVelocity(0, 0);
-			this.input.keyboard.enabled = true;
-			interactiveArea.setInteractive();
+    for (let i = 0; i < numberOfBalls; i++) {
+      if (this.ballsData[`ball_${i}`]) {
+        this.ball = this.physics.add
+          .sprite(
+            this.ballsData[`ball_${i}`].x,
+            this.ballsData[`ball_${i}`].y,
+            `ball_${i}`
+          )
+          .setName(i - 1);
+        this.ballsGroup.add(this.ball);
+      } else {
+        this.indexBall = this.physics.add.sprite(
+          this.ballsData.indexBall.x,
+          this.ballsData.indexBall.y,
+          "W-Ball"
+        );
+        this.indexBall.body.setSize(50, 50);
+      }
+    }
 
-		});
+    for (let i = 0; i < numberOfHoles; i++) {
+      this.hole = this.add.image(
+        this.holesData[`whole_${i + 1}`].x,
+        this.holesData[`whole_${i + 1}`].y,
+        this.holesData[`whole_${i + 1}`].texture
+      );
+      if (this.holesData[`whole_${i + 1}`].texture == "whole_1") {
+        this.hole.setFlipY(this.holesData[`whole_${i + 1}`].flip);
+      } else {
+        this.hole.setFlipX(this.holesData[`whole_${i + 1}`].flip);
+      }
+      this.holesGroup.add(this.hole);
+      this.container_holes.add(this.hole);
+    }
+  }
 
-		// Ball and hole collider
-		this.physics.add.collider(this.oLevelManager.ballsGroup, this.oLevelManager.holesGroup, (number) => {
-			this.oLevelManager.ballsGroup.children.entries.forEach((ball) => {
-				if (ball.name == number.name) {
-					ball.destroy();
-				}
-			})
+  // Handle the keyboard key input
+  handleKeyDown(event) {
+    console.log(event);
+    switch (event.code) {
+      case "ArrowUp":
+        this.ballMovementDirection(-90, 0, -1500, 0.6, 1);
+        break;
+      case "ArrowDown":
+        this.ballMovementDirection(-270, 0, 1500, 0.6, 1);
+        break;
+      case "ArrowLeft":
+        this.ballMovementDirection(-180, -1500, 0, 1, 0.6);
+        break;
+      case "ArrowRight":
+        this.ballMovementDirection(0, 1500, 0, 1, 0.6);
+        break;
+    }
+  }
 
-			if (this.oLevelManager.ballsGroup.children.entries.length == 0) {
-				nLevelCount += 1;
-				this.levelHandler();
-			}
-		});
+  // Scroller for mobile user
+  scroll() {
+    interactiveArea = this.table;
+    interactiveArea.setOrigin(0.5);
+    interactiveArea.setInteractive();
 
-		//Ball and border collider
-		this.physics.add.collider(this.oLevelManager.ballsGroup, this.oLevelManager.borderGroup);
+    let dragStartX = 0;
+    let dragStartY = 0;
 
-		this.physics.add.collider(this.oLevelManager.indexBall, this.oLevelManager.holesGroup, () => {
-			this.oLevelManager.indexBall.setScale(1, 1);
-			this.oLevelManager.indexBall.destroy();
+    interactiveArea.on("pointerdown", (pointer) => {
+      dragStartX = pointer.x;
+      dragStartY = pointer.y;
+    });
 
-			this.levelUpText = this.add.text(540, 1149, "Try again").setFontFamily("GochiHand");
-			this.levelUpText.setOrigin(0.5, 0.5).setShadowColor("black").setAngle(-10).setFontSize(100);
+    interactiveArea.on("pointerup", (pointer) => {
+      const dragEndX = pointer.x;
+      const dragEndY = pointer.y;
 
-			this.tweens.add({
-				targets: this.levelUpText,
-				ease: "Back ease-out",
-				scaleX: 1.2,
-				scaleY: 1.2,
-				duration: 700,
-				onComplete: () => {
-					this.tweens.add({
-						targets: this.levelUpText,
-						ease: "Back ease-in",
-						scaleX: 1,
-						scaleY: 1,
-						duration: 700,
-						onComplete: () => {
-							this.scene.restart("Level");
-						}
-					})
-				}
+      const dragThreshold = 50;
 
-			})
-		});
+      const dragX = dragEndX - dragStartX;
+      const dragY = dragEndY - dragStartY;
 
-		let shape = this.make.graphics();
-		shape.fillRect(760, 262, 420, 535);
-		const mask = shape.createGeometryMask();
-		this.arrow.setMask(mask);
-	}
+      if (
+        Math.abs(dragX) > Math.abs(dragY) &&
+        Math.abs(dragX) > dragThreshold
+      ) {
+        //Check Y Axis Collision and Continue Movement; Stop at Collision
+        if (dragX > 0) {
+          this.handleScroll("Right");
+        } else {
+          this.handleScroll("Left");
+        }
+      } else if (
+        Math.abs(dragY) > Math.abs(dragX) &&
+        Math.abs(dragY) > dragThreshold
+      ) {
+        //Check X Axis Collision and Continue Movement; Stop at Collision
+        if (dragY > 0) {
+          this.handleScroll("Down");
+        } else {
+          this.handleScroll("Up");
+        }
+      }
+    });
+  }
 
-	levelHandler() {
+  // handle scroll input
+  handleScroll(swipeSide) {
+    switch (swipeSide) {
+      case "Left":
+        this.ballMovementDirection(-180, -1500, 0, 1, 0.6);
+        interactiveArea.disableInteractive();
+        break;
 
-		setTimeout(() => {
+      case "Right":
+        this.ballMovementDirection(0, 1500, 0, 1, 0.6);
+        interactiveArea.disableInteractive();
+        break;
 
-			if (nLevelCount == 7) {
-				nLevelCount = 1;
-				this.oSoundManager.playSound(this.oSoundManager.levelWinSound, false);
-				this.scene.stop("Level");
-				this.scene.start("LevelUp");
-			}
-			else {
-				this.scene.restart("Level");
-			}
-		}, 300);
-	}
+      case "Up":
+        this.ballMovementDirection(-90, 0, -1500, 0.6, 1);
+        interactiveArea.disableInteractive();
+        break;
 
-	// Handle the keyboard key input
-	handleKeyDown(event) {
+      case "Down":
+         this.ballMovementDirection(-270, 0, 1500, 0.6, 1);
+        interactiveArea.disableInteractive();
+        break;
+    }
+  }
 
-		switch (event.code) {
-			case 'ArrowUp':
-				this.ballMovementDirection(-90, 0, -1500, 0.6, 1);
-				break;
+  // set angle, velocity and scale for ball
+  ballMovementDirection(angle, velocityX, velocityY, scaleX, scaleY) {
+    this.input.keyboard.enabled = false;
+    this.retryButton.setInteractive();
 
-			case 'ArrowDown':
-				this.ballMovementDirection(-270, 0, 1500, 0.6, 1);
-				break;
+    this.arrow
+      .setPosition(this.indexBall.x, this.indexBall.y)
+      .setAngle(angle)
+      .setVisible(true);
 
-			case 'ArrowLeft':
-				this.ballMovementDirection(-180, -1500, 0, 1, 0.6);
-				break;
+    setTimeout(() => {
+      this.arrow.setVisible(false);
+      this.indexBall.setVelocityX(velocityX);
+      this.indexBall.setVelocityY(velocityY);
+      this.indexBall.setScale(scaleX, scaleY);
+    }, 100);
+    setTimeout(() => {
+      switch (angle) {
+        case -90:
+          this.indexBall.setPosition(this.indexBall.x, this.indexBall.y + 14);
+          break;
+        case -270:
+          this.indexBall.setPosition(this.indexBall.x, this.indexBall.y - 14);
+          break;
+        case -180:
+          this.indexBall.setPosition(this.indexBall.x + 14, this.indexBall.y);
+          break;
+        case 0:
+          this.indexBall.setPosition(this.indexBall.x - 14, this.indexBall.y);
+      }
+    }, 300);
+  }
 
-			case 'ArrowRight':
-				this.ballMovementDirection(0, 1500, 0, 1, 0.6);
-				break;
-		}
-	}
-
-	// Scroller for mobile user
-	scroll() {
-		interactiveArea = this.table;
-		interactiveArea.setOrigin(0.5);
-		interactiveArea.setInteractive();
-
-		let dragStartX = 0;
-		let dragStartY = 0;
-
-		interactiveArea.on("pointerdown", (pointer) => {
-			dragStartX = pointer.x;
-			dragStartY = pointer.y;
-		});
-
-		interactiveArea.on("pointerup", (pointer) => {
-			const dragEndX = pointer.x;
-			const dragEndY = pointer.y;
-
-			const dragThreshold = 50;
-
-			const dragX = dragEndX - dragStartX;
-			const dragY = dragEndY - dragStartY;
-
-			if (Math.abs(dragX) > Math.abs(dragY) && Math.abs(dragX) > dragThreshold) {
-				//Check Y Axis Collision and Continue Movement; Stop at Collision
-				if (dragX > 0) {
-					this.handleScroll("Right");
-				} else {
-					this.handleScroll("Left");
-				}
-			} else if (
-				Math.abs(dragY) > Math.abs(dragX) &&
-				Math.abs(dragY) > dragThreshold
-			) {
-				//Check X Axis Collision and Continue Movement; Stop at Collision
-				if (dragY > 0) {
-					this.handleScroll("Down");
-				} else {
-					this.handleScroll("Up");
-				}
-			}
-		});
-	}
-
-	// handle scroll input 
-	handleScroll(swipeSide) {
-		switch (swipeSide) {
-			case "Left":
-				this.ballMovementDirection(-180, -1500, 0, 1, 0.6);
-				interactiveArea.disableInteractive();
-				break;
-
-			case "Right":
-				this.ballMovementDirection(0, 1500, 0, 1, 0.6);
-				interactiveArea.disableInteractive();
-				break;
-
-			case "Up":
-				this.ballMovementDirection(-90, 0, -1500, 0.6, 1);
-				interactiveArea.disableInteractive();
-				break;
-
-			case "Down":
-				this.ballMovementDirection(-270, 0, 1500, 0.6, 1);
-				interactiveArea.disableInteractive();
-				break;
-		}
-	}
-
-	// set angle, velocity and scale for ball
-	ballMovementDirection(angle, velocityX, velocityY, scaleX, scaleY) {
-		this.input.keyboard.enabled = false;
-
-		this.arrow.setPosition(this.oLevelManager.indexBall.x, this.oLevelManager.indexBall.y).setAngle(angle).setVisible(true);
-
-		setTimeout(() => {
-			this.arrow.setVisible(false);
-			this.oLevelManager.indexBall.setVelocityX(velocityX);
-			this.oLevelManager.indexBall.setVelocityY(velocityY);
-			this.oLevelManager.indexBall.setScale(scaleX, scaleY);
-		}, 200);
-	}
-
-	/* END-USER-CODE */
+  /* END-USER-CODE */
 }
 
-/* END OF COMPILED CODE */
-
+/* END OF COMPILED CODE */ 
 // You can write more code here

@@ -22,22 +22,14 @@ class Preload extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// rectangle_1
-		const rectangle_1 = this.add.rectangle(960, 540, 1080, 1920);
-		rectangle_1.angle = 90;
-		rectangle_1.isFilled = true;
-		rectangle_1.fillColor = 5101402;
-
-		// gameLogo
-		const gameLogo = this.add.image(960, 355, "gameLogo");
-		gameLogo.scaleX = 2;
-		gameLogo.scaleY = 2;
+		// preload_screen
+		this.add.image(960, 540, "preload-screen");
 
 		// progress
-		const progress = this.add.text(960, 885, "", {});
+		const progress = this.add.text(960, 1016, "", {});
 		progress.setOrigin(0.5, 0.5);
 		progress.text = "0%";
-		progress.setStyle({ "fontSize": "54px" });
+		progress.setStyle({ "fontFamily": "Alfa Slab One", "fontSize": "54px" });
 
 		// progress (components)
 		new PreloadText(progress);

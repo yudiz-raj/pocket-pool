@@ -13,13 +13,11 @@
             "type": "Container",
             "id": "97cd12e7-96d8-46e4-805c-3347b1f16bc9",
             "label": "body",
-            "components": [],
             "list": [
                 {
                     "type": "Image",
-                    "id": "36567473-759c-4ffb-a24a-05825593cd14",
+                    "id": "7ce9539f-31c0-4605-b98a-481d852ab59b",
                     "label": "background",
-                    "components": [],
                     "texture": {
                         "key": "Background"
                     },
@@ -31,13 +29,11 @@
                     "id": "8cab5475-bcb8-4e5b-8f2a-1b5c04d17194",
                     "label": "container_border",
                     "scope": "CLASS",
-                    "components": [],
                     "list": [
                         {
                             "type": "Rectangle",
                             "id": "8e4cf4d8-fbb0-44c9-ab3c-3c35d4c923af",
                             "label": "rectangle_1",
-                            "components": [],
                             "x": 966,
                             "y": 224,
                             "scaleX": 6,
@@ -51,7 +47,6 @@
                             "type": "Rectangle",
                             "id": "2013f59b-8d7d-45af-ad7d-4f756d985a13",
                             "label": "rectangle",
-                            "components": [],
                             "x": 966,
                             "y": 834,
                             "scaleX": 6,
@@ -65,7 +60,6 @@
                             "type": "Rectangle",
                             "id": "c13a981e-0228-448d-a088-78ca433a29de",
                             "label": "rectangle_2",
-                            "components": [],
                             "x": 719,
                             "y": 548,
                             "scaleX": 7,
@@ -80,7 +74,6 @@
                             "type": "Rectangle",
                             "id": "4fb2a425-b59f-43e8-b37b-6cd9cb8b9892",
                             "label": "rectangle_3",
-                            "components": [],
                             "x": 1210,
                             "y": 548,
                             "scaleX": 7,
@@ -97,13 +90,11 @@
                     "type": "Container",
                     "id": "f1c35330-fcda-4f14-b961-183d0440494d",
                     "label": "container_levelTag",
-                    "components": [],
                     "list": [
                         {
                             "type": "Image",
                             "id": "7d532cbb-0ec2-4226-9ae8-8ceb2c85726b",
                             "label": "levelHeading",
-                            "components": [],
                             "texture": {
                                 "key": "Level-Board"
                             },
@@ -114,7 +105,6 @@
                             "type": "Text",
                             "id": "d7dbd6ed-f7ae-4355-b1db-db267d9dbc4c",
                             "label": "levelText",
-                            "components": [],
                             "x": 960,
                             "y": 139,
                             "originX": 0.5,
@@ -133,7 +123,6 @@
                             "id": "0c00497c-5505-4982-92b7-632d3bb66e99",
                             "label": "levelNumber",
                             "scope": "CLASS",
-                            "components": [],
                             "x": 960,
                             "y": 177,
                             "originX": 0.5,
@@ -154,7 +143,6 @@
                     "id": "ac998302-838d-47ee-a1de-e53b0e7f8eb8",
                     "label": "table",
                     "scope": "CLASS",
-                    "components": [],
                     "texture": {
                         "key": "Table"
                     },
@@ -167,16 +155,13 @@
                     "type": "Container",
                     "id": "83067e60-08ca-47f2-937e-8d618ccb7c58",
                     "label": "container_holes",
-                    "scope": "CLASS",
-                    "components": [],
-                    "list": []
+                    "scope": "CLASS"
                 },
                 {
                     "type": "Container",
                     "id": "fd016895-b1b7-429b-b891-185ad9eece5f",
                     "label": "container_retry",
                     "scope": "CLASS",
-                    "components": [],
                     "x": 960.5487956409165,
                     "y": 968.5408182439949,
                     "list": [
@@ -185,7 +170,6 @@
                             "id": "323bf030-739c-4cb5-bbdf-7eb17e1f0e3f",
                             "label": "retryButton",
                             "scope": "CLASS",
-                            "components": [],
                             "texture": {
                                 "key": "Button"
                             },
@@ -197,7 +181,6 @@
                             "id": "d599a8a4-d97f-4af7-bace-cb0a5e90fc36",
                             "label": "retryCount",
                             "scope": "CLASS",
-                            "components": [],
                             "x": 55,
                             "y": -4,
                             "originX": 0.5,
@@ -210,7 +193,6 @@
                             "type": "Image",
                             "id": "e9e714b5-d3c1-4790-afea-b50d18657498",
                             "label": "retry_icon",
-                            "components": [],
                             "texture": {
                                 "key": "Retry-icon"
                             },
@@ -223,7 +205,6 @@
                             "type": "Image",
                             "id": "1c984e69-426a-498c-9408-626573a19f6b",
                             "label": "multiply_icon",
-                            "components": [],
                             "texture": {
                                 "key": "multiply-icon"
                             },
@@ -238,7 +219,6 @@
                     "type": "Image",
                     "id": "67530bf3-0296-4d2a-8a9b-e506cbc29c03",
                     "label": "loadingImage",
-                    "components": [],
                     "texture": {
                         "key": "loadingImage"
                     },
@@ -257,7 +237,6 @@
                     "id": "ee648497-abd4-401d-b2c0-78e3a677a805",
                     "label": "arrow",
                     "scope": "CLASS",
-                    "components": [],
                     "texture": {
                         "key": "arrow"
                     },
@@ -276,6 +255,6 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 3
+        "version": 4
     }
 }

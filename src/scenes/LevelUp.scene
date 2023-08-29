@@ -13,13 +13,11 @@
             "type": "Container",
             "id": "086c6198-efb3-4191-94d0-1524af001143",
             "label": "body",
-            "components": [],
             "list": [
                 {
                     "type": "Image",
-                    "id": "a80c5326-0ad1-4047-804d-5a687cad8bfa",
+                    "id": "0e8362b2-1d21-43ab-934e-2bc363e2e583",
                     "label": "winning_bg",
-                    "components": [],
                     "texture": {
                         "key": "winning-bg"
                     },
@@ -27,57 +25,18 @@
                     "y": 540
                 },
                 {
-                    "type": "Image",
-                    "id": "8e6ea991-bae7-4bfe-b08e-e6f40d4593cd",
-                    "label": "party_popper",
-                    "components": [],
-                    "texture": {
-                        "key": "party-popper"
-                    },
-                    "x": 957,
-                    "y": 527,
-                    "scaleX": 1.5,
-                    "scaleY": 1.5
-                },
-                {
-                    "type": "Image",
-                    "id": "1ef1f2f3-001f-4108-9726-d3ad4bc0fa5f",
-                    "label": "congratulation_text",
-                    "components": [],
-                    "texture": {
-                        "key": "Congratulation-text"
-                    },
-                    "x": 964,
-                    "y": 193,
-                    "scaleX": 1.5,
-                    "scaleY": 1.5
-                },
-                {
-                    "type": "Image",
-                    "id": "901239e5-d8a2-4686-adce-d50f65c99d96",
-                    "label": "you_won_txt",
-                    "components": [],
-                    "texture": {
-                        "key": "you-won"
-                    },
-                    "x": 971,
-                    "y": 477
-                },
-                {
                     "type": "Container",
                     "id": "df09f768-03f5-4565-b2f2-18bd980e759b",
                     "label": "container_replay",
                     "scope": "CLASS",
-                    "components": [],
-                    "x": 961.9461667947436,
-                    "y": 965.0194772317875,
+                    "x": 962,
+                    "y": 991,
                     "list": [
                         {
                             "type": "Image",
                             "id": "50605fe6-1203-41e8-b3ba-75a17fe9710d",
                             "label": "replayButton",
                             "scope": "CLASS",
-                            "components": [],
                             "texture": {
                                 "key": "Button"
                             },
@@ -88,7 +47,6 @@
                             "type": "Text",
                             "id": "d83f146b-0fd7-4148-8c7b-8d67138305fe",
                             "label": "retryText",
-                            "components": [],
                             "x": -1.94616679474359,
                             "y": -0.019477231787504934,
                             "originX": 0.5,
@@ -97,6 +55,53 @@
                             "align": "center",
                             "fontFamily": "Alfa Slab One",
                             "fontSize": "38px"
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "id": "8e6ea991-bae7-4bfe-b08e-e6f40d4593cd",
+                    "label": "party_popper",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "party-popper"
+                    },
+                    "x": 961.277587890625,
+                    "y": 557.9254150390625,
+                    "scaleX": 0,
+                    "scaleY": 0
+                },
+                {
+                    "type": "Container",
+                    "id": "edd218f0-f76c-4597-9608-02a36985c77d",
+                    "label": "container_winningPopUp",
+                    "scope": "CLASS",
+                    "x": 955,
+                    "y": 598,
+                    "scaleX": 3,
+                    "scaleY": 3,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "1ef1f2f3-001f-4108-9726-d3ad4bc0fa5f",
+                            "label": "congratulation_text",
+                            "texture": {
+                                "key": "Congratulation-text"
+                            },
+                            "x": 9.092519290992072,
+                            "y": -347.3582023046822,
+                            "scaleX": 1.5,
+                            "scaleY": 1.5
+                        },
+                        {
+                            "type": "Image",
+                            "id": "901239e5-d8a2-4686-adce-d50f65c99d96",
+                            "label": "you_won_txt",
+                            "texture": {
+                                "key": "you-won"
+                            },
+                            "x": 16.092519290992072,
+                            "y": -63.35820230468221
                         }
                     ]
                 }
@@ -108,6 +113,6 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 3
+        "version": 4
     }
 }

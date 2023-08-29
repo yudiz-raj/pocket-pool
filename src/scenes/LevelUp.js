@@ -23,24 +23,8 @@ class LevelUp extends Phaser.Scene {
 		const winning_bg = this.add.image(960, 540, "winning-bg");
 		body.add(winning_bg);
 
-		// party_popper
-		const party_popper = this.add.image(957, 527, "party-popper");
-		party_popper.scaleX = 1.5;
-		party_popper.scaleY = 1.5;
-		body.add(party_popper);
-
-		// congratulation_text
-		const congratulation_text = this.add.image(964, 193, "Congratulation-text");
-		congratulation_text.scaleX = 1.5;
-		congratulation_text.scaleY = 1.5;
-		body.add(congratulation_text);
-
-		// you_won_txt
-		const you_won_txt = this.add.image(971, 477, "you-won");
-		body.add(you_won_txt);
-
 		// container_replay
-		const container_replay = this.add.container(961.9461667947436, 965.0194772317875);
+		const container_replay = this.add.container(962, 991);
 		body.add(container_replay);
 
 		// replayButton
@@ -54,30 +38,60 @@ class LevelUp extends Phaser.Scene {
 		retryText.setStyle({ "align": "center", "fontFamily": "Alfa Slab One", "fontSize": "38px" });
 		container_replay.add(retryText);
 
-		this.container_replay = container_replay;
+		// party_popper
+		const party_popper = this.add.image(961.277587890625, 557.9254150390625, "party-popper");
+		party_popper.scaleX = 0;
+		party_popper.scaleY = 0;
+		body.add(party_popper);
+
+		// container_winningPopUp
+		const container_winningPopUp = this.add.container(955, 598);
+		container_winningPopUp.scaleX = 3;
+		container_winningPopUp.scaleY = 3;
+		body.add(container_winningPopUp);
+
+		// congratulation_text
+		const congratulation_text = this.add.image(9.092519290992072, -347.3582023046822, "Congratulation-text");
+		congratulation_text.scaleX = 1.5;
+		congratulation_text.scaleY = 1.5;
+		container_winningPopUp.add(congratulation_text);
+
+		// you_won_txt
+		const you_won_txt = this.add.image(16.092519290992072, -63.35820230468221, "you-won");
+		container_winningPopUp.add(you_won_txt);
+
 		this.replayButton = replayButton;
+		this.container_replay = container_replay;
+		this.party_popper = party_popper;
+		this.container_winningPopUp = container_winningPopUp;
 
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.GameObjects.Image} */
+	replayButton;
 	/** @type {Phaser.GameObjects.Container} */
 	container_replay;
 	/** @type {Phaser.GameObjects.Image} */
-	replayButton;
+	party_popper;
+	/** @type {Phaser.GameObjects.Container} */
+	container_winningPopUp;
 
 	/* START-USER-CODE */
 
 	// Write your code here
 
 	create() {
-
 		this.editorCreate();
 		this.oSoundManager = new SoundManager(this);
 		this.oTweenManager = new TweenManager(this);
 
+		this.oTweenManager.winningAnimation(this.party_popper, 1.5);
+		this.oTweenManager.winningAnimation(this.container_winningPopUp, 1);
 		this.replayButton.setInteractive().on("pointerdown", () => {
 			this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
 			this.oTweenManager.buttonAnimation(this.container_replay);
+			nRetryCount = 3;
 		})
 	}
 

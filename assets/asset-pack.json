@@ -59,6 +59,11 @@
                 "key": "Button"
             },
             {
+                "url": "assets/images/carpet.png",
+                "type": "image",
+                "key": "carpet"
+            },
+            {
                 "url": [
                     "assets/sounds/Click.mp3"
                 ],
@@ -66,7 +71,7 @@
                 "key": "Click"
             },
             {
-                "url": "assets/images/Winning screen/Congratulation-text.png",
+                "url": "assets/images/winning-screen/Congratulation-text.png",
                 "type": "image",
                 "key": "Congratulation-text"
             },
@@ -108,7 +113,7 @@
                 "key": "multiply-icon"
             },
             {
-                "url": "assets/images/Winning screen/party-popper.png",
+                "url": "assets/images/winning-screen/party-popper.png",
                 "type": "image",
                 "key": "party-popper"
             },
@@ -128,9 +133,19 @@
                 "key": "SoundManager"
             },
             {
+                "url": "assets/images/Splash-screen.png",
+                "type": "image",
+                "key": "Splash-screen"
+            },
+            {
                 "url": "assets/images/Table.png",
                 "type": "image",
                 "key": "Table"
+            },
+            {
+                "url": "assets/images/Try-again.png",
+                "type": "image",
+                "key": "Try-again"
             },
             {
                 "url": "src/scripts/TweenManager.js",
@@ -153,12 +168,12 @@
                 "key": "whole_2"
             },
             {
-                "url": "assets/images/Winning screen/winning-bg.png",
+                "url": "assets/images/winning-screen/winning-bg.png",
                 "type": "image",
                 "key": "winning-bg"
             },
             {
-                "url": "assets/images/Winning screen/you-won.png",
+                "url": "assets/images/winning-screen/you-won.png",
                 "type": "image",
                 "key": "you-won"
             }

@@ -4,6 +4,7 @@ class TweenManager {
     }
 
     buttonAnimation(target) {
+
         this.oScene.add.tween({
             targets: target,
             scaleX: "*=0.8",
@@ -11,7 +12,7 @@ class TweenManager {
             duration: 80,
             yoyo: true,
             onComplete: () => {
-                if (target.list[1].text == "RETRY") {
+                if (target.list[1].text == nRetryCount) {
                     this.oScene.scene.restart("Level");
                 }
                 if (target.list[1].text == "REPLAY") {
@@ -19,6 +20,35 @@ class TweenManager {
                     this.oScene.scene.start("Loading");
                 }
             }
+        });
+    }
+
+    popUpAnimation(target) {
+        this.oScene.add.tween({
+            targets: target,
+            scaleX: "*=0.8",
+            scaleY: "*=0.8",
+            ease: "Linear",
+            duration: 350,
+            yoyo: true,
+            onComplete: () => {
+                if (target.texture.key == "Try-again") {
+                    setTimeout(() => {
+                        this.oScene.scene.restart("Level");
+                    }, 1000);
+                }
+            }
+        });
+    }
+
+    winningAnimation(target, scale){
+        this.oScene.add.tween({
+            targets: target,
+            scaleX: scale,
+            scaleY: scale,
+            ease: "power2",
+            duration: 400,
+            // yoyo: true,
         });
     }
 }
