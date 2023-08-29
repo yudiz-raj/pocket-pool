@@ -51,4 +51,23 @@ class TweenManager {
             // yoyo: true,
         });
     }
+
+    shakeAnimation(){
+        this.oScene.add.tween({
+            targets: this.oScene.container_retry,
+            angle: -10,
+            duration: 50,
+            ease: "Power2",
+            yoyo: true,
+            onComplete: () => {
+                this.oScene.add.tween({
+                    targets: this.oScene.container_retry,
+                    angle: 10,
+                    duration: 50,
+                    ease: "Power2",
+                    yoyo: true,
+                });
+            }
+        });
+    }
 }

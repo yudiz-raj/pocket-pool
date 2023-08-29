@@ -1,5 +1,7 @@
 // You can write more code here
 let interactiveArea;
+let nMove = 0;
+let nScore = 0;
 /* START OF COMPILED CODE */
 
 class Level extends Phaser.Scene {
@@ -192,6 +194,8 @@ class Level extends Phaser.Scene {
     this.retryButton.on("pointerdown", () => {
       this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
       if (nRetryCount > 0) {
+        nMove = 0;
+        nScore = 0;
         this.oTweenManager.buttonAnimation(this.container_retry);
         nRetryCount -= 1;
         this.retryCount.setText(nRetryCount);
@@ -253,6 +257,8 @@ class Level extends Phaser.Scene {
       this.ballsGroup.children.entries.forEach((ball) => {
         if (ball.name == number.name) {
           ball.destroy();
+          nScore++;
+          nMove = nScore;
         }
       });
       if (this.ballsGroup.children.entries.length == 0) {
@@ -264,6 +270,8 @@ class Level extends Phaser.Scene {
     this.physics.add.collider(this.ballsGroup, this.borderGroup);
     //IndexBall and holes collider
     this.physics.add.collider(this.indexBall, this.holesGroup, () => {
+      nMove = 0;
+      nScore = 0;
       this.indexBall.setScale(1, 1);
       this.indexBall.destroy();
       this.tryAgainImage = this.add
@@ -279,6 +287,8 @@ class Level extends Phaser.Scene {
   }
 
   levelHandler() {
+    nMove = 0;
+    nScore = 0;
     setTimeout(() => {
       if (nLevelCount == 11) {
         nLevelCount = 1;
@@ -339,7 +349,6 @@ class Level extends Phaser.Scene {
 
   // Handle the keyboard key input
   handleKeyDown(event) {
-    console.log(event);
     switch (event.code) {
       case "ArrowUp":
         this.ballMovementDirection(-90, 0, -1500, 0.6, 1);
@@ -430,6 +439,7 @@ class Level extends Phaser.Scene {
 
   // set angle, velocity and scale for ball
   ballMovementDirection(angle, velocityX, velocityY, scaleX, scaleY) {
+    nMove++;
     this.input.keyboard.enabled = false;
     this.retryButton.setInteractive();
 
@@ -437,6 +447,10 @@ class Level extends Phaser.Scene {
       .setPosition(this.indexBall.x, this.indexBall.y)
       .setAngle(angle)
       .setVisible(true);
+
+    if(nMove > nScore + 1){
+      this.oTweenManager.shakeAnimation();
+    }  
 
     setTimeout(() => {
       this.arrow.setVisible(false);
