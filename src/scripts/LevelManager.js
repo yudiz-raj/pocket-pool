@@ -139,7 +139,7 @@ class LevelManager {
                         y: 394,
                     },
                     ball_2: {
-                        x: 1080,
+                        x: 1079,
                         y: 449,
                     },
                     ball_3: {
@@ -207,7 +207,7 @@ class LevelManager {
                         y: 502,
                     },
                     ball_1: {
-                        x: 1081,
+                        x: 1081.35,
                         y: 609,
                     },
                     ball_2: {
@@ -371,7 +371,7 @@ class LevelManager {
                     },
                     ball_1: {
                         x: 966,
-                        y: 342,
+                        y: 339,
                     },
                     ball_2: {
                         x: 907,

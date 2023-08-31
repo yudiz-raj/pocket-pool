@@ -120,17 +120,6 @@ class Level extends Phaser.Scene {
 		multiply_icon.scaleY = 0.5;
 		container_retry.add(multiply_icon);
 
-		// loadingImage
-		const loadingImage = this.add.image(-1373, 576, "loadingImage");
-		loadingImage.scaleX = 2;
-		loadingImage.scaleY = 2;
-		loadingImage.alpha = 0.1;
-		loadingImage.alphaTopLeft = 0.1;
-		loadingImage.alphaTopRight = 0.1;
-		loadingImage.alphaBottomLeft = 0.1;
-		loadingImage.alphaBottomRight = 0.1;
-		body.add(loadingImage);
-
 		// arrow
 		const arrow = this.add.image(768, 544, "arrow");
 		arrow.scaleX = 1.5;
@@ -192,7 +181,6 @@ class Level extends Phaser.Scene {
     this.scroll();
 
     this.retryButton.on("pointerdown", () => {
-      this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
       if (nRetryCount > 0) {
         nMove = 0;
         nScore = 0;
@@ -241,10 +229,6 @@ class Level extends Phaser.Scene {
       this.ballsGroup,
       (indexBall, ball) => {
         this.indexBall.setVelocity(0, 0);
-        this.oSoundManager.playSound(
-          this.oSoundManager.ballHittingSound,
-          false
-        );
         this.indexBall.setScale(1, 1);
         this.input.keyboard.enabled = true;
         interactiveArea.setInteractive();
@@ -292,7 +276,6 @@ class Level extends Phaser.Scene {
     setTimeout(() => {
       if (nLevelCount == 11) {
         nLevelCount = 1;
-        this.oSoundManager.playSound(this.oSoundManager.levelWinSound, false);
         this.scene.stop("Level");
         this.scene.start("LevelUp");
       } else {
@@ -302,31 +285,17 @@ class Level extends Phaser.Scene {
   }
 
   levelSelecter() {
-    let numberOfBalls = Object.keys(
-      this.oLevelManager.aLevel[nLevelCount - 1].oBalls
-    ).length;
-    let numberOfHoles = Object.keys(
-      this.oLevelManager.aLevel[nLevelCount - 1].oHoles
-    ).length;
+    let numberOfBalls = Object.keys(this.oLevelManager.aLevel[nLevelCount - 1].oBalls).length;
+    let numberOfHoles = Object.keys(this.oLevelManager.aLevel[nLevelCount - 1].oHoles).length;
     this.ballsData = this.oLevelManager.aLevel[nLevelCount - 1].oBalls;
     this.holesData = this.oLevelManager.aLevel[nLevelCount - 1].oHoles;
 
     for (let i = 0; i < numberOfBalls; i++) {
       if (this.ballsData[`ball_${i}`]) {
-        this.ball = this.physics.add
-          .sprite(
-            this.ballsData[`ball_${i}`].x,
-            this.ballsData[`ball_${i}`].y,
-            `ball_${i}`
-          )
-          .setName(i - 1);
+        this.ball = this.physics.add.sprite(this.ballsData[`ball_${i}`].x,this.ballsData[`ball_${i}`].y,`ball_${i}`).setName(i - 1);
         this.ballsGroup.add(this.ball);
       } else {
-        this.indexBall = this.physics.add.sprite(
-          this.ballsData.indexBall.x,
-          this.ballsData.indexBall.y,
-          "W-Ball"
-        );
+        this.indexBall = this.physics.add.sprite(this.ballsData.indexBall.x,this.ballsData.indexBall.y,"W-Ball");
         this.indexBall.body.setSize(50, 50);
       }
     }
@@ -443,12 +412,12 @@ class Level extends Phaser.Scene {
     this.input.keyboard.enabled = false;
     this.retryButton.setInteractive();
 
-    this.arrow
-      .setPosition(this.indexBall.x, this.indexBall.y)
-      .setAngle(angle)
-      .setVisible(true);
+    this.stick = this.add.image(this.indexBall.x, this.indexBall.y, "stick");
+		this.stick.setOrigin(0.5, 1);
+    this.arrow.setPosition(this.indexBall.x, this.indexBall.y).setAngle(angle).setVisible(true);
+    this.stick.setPosition(this.indexBall.x, this.indexBall.y).setAngle(angle - 90).setVisible(true).setDepth(100);
 
-    if(nMove > nScore + 1){
+    if(nMove > nScore + 3){
       this.oTweenManager.shakeAnimation();
     }  
 
@@ -459,6 +428,7 @@ class Level extends Phaser.Scene {
       this.indexBall.setScale(scaleX, scaleY);
     }, 100);
     setTimeout(() => {
+      this.stick.setVisible(false);
       switch (angle) {
         case -90:
           this.indexBall.setPosition(this.indexBall.x, this.indexBall.y + 14);

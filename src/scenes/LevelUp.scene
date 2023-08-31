@@ -59,19 +59,6 @@
                     ]
                 },
                 {
-                    "type": "Image",
-                    "id": "8e6ea991-bae7-4bfe-b08e-e6f40d4593cd",
-                    "label": "party_popper",
-                    "scope": "CLASS",
-                    "texture": {
-                        "key": "party-popper"
-                    },
-                    "x": 961.277587890625,
-                    "y": 557.9254150390625,
-                    "scaleX": 0,
-                    "scaleY": 0
-                },
-                {
                     "type": "Container",
                     "id": "edd218f0-f76c-4597-9608-02a36985c77d",
                     "label": "container_winningPopUp",

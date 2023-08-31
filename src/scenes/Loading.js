@@ -52,7 +52,6 @@ class Loading extends Phaser.Scene {
 		}, 1000);
 
 		this.input.on("pointerdown", () => {
-			this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
 			this.scene.stop("Loading");
 			setTimeout(() => {
 				this.scene.start("Level");

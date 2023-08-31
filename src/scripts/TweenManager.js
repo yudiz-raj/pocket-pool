@@ -41,7 +41,7 @@ class TweenManager {
         });
     }
 
-    winningAnimation(target, scale){
+    winningAnimation(target, scale) {
         this.oScene.add.tween({
             targets: target,
             scaleX: scale,
@@ -52,20 +52,22 @@ class TweenManager {
         });
     }
 
-    shakeAnimation(){
+    shakeAnimation() {
         this.oScene.add.tween({
             targets: this.oScene.container_retry,
-            angle: -10,
-            duration: 50,
+            angle: -15,
+            duration: 30,
             ease: "Power2",
             yoyo: true,
+            repeate: true,
             onComplete: () => {
                 this.oScene.add.tween({
                     targets: this.oScene.container_retry,
-                    angle: 10,
-                    duration: 50,
+                    angle: 15,
+                    duration: 30,
                     ease: "Power2",
                     yoyo: true,
+                    repeate: true,
                 });
             }
         });

@@ -138,6 +138,11 @@
                 "key": "Splash-screen"
             },
             {
+                "url": "assets/images/stick.png",
+                "type": "image",
+                "key": "stick"
+            },
+            {
                 "url": "assets/images/Table.png",
                 "type": "image",
                 "key": "Table"

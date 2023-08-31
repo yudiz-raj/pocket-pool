@@ -217,23 +217,6 @@
                 },
                 {
                     "type": "Image",
-                    "id": "67530bf3-0296-4d2a-8a9b-e506cbc29c03",
-                    "label": "loadingImage",
-                    "texture": {
-                        "key": "loadingImage"
-                    },
-                    "x": -1373,
-                    "y": 576,
-                    "scaleX": 2,
-                    "scaleY": 2,
-                    "alpha": 0.1,
-                    "alphaTopLeft": 0.1,
-                    "alphaTopRight": 0.1,
-                    "alphaBottomLeft": 0.1,
-                    "alphaBottomRight": 0.1
-                },
-                {
-                    "type": "Image",
                     "id": "ee648497-abd4-401d-b2c0-78e3a677a805",
                     "label": "arrow",
                     "scope": "CLASS",

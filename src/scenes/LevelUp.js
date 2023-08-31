@@ -38,12 +38,6 @@ class LevelUp extends Phaser.Scene {
 		retryText.setStyle({ "align": "center", "fontFamily": "Alfa Slab One", "fontSize": "38px" });
 		container_replay.add(retryText);
 
-		// party_popper
-		const party_popper = this.add.image(961.277587890625, 557.9254150390625, "party-popper");
-		party_popper.scaleX = 0;
-		party_popper.scaleY = 0;
-		body.add(party_popper);
-
 		// container_winningPopUp
 		const container_winningPopUp = this.add.container(955, 598);
 		container_winningPopUp.scaleX = 3;
@@ -62,7 +56,6 @@ class LevelUp extends Phaser.Scene {
 
 		this.replayButton = replayButton;
 		this.container_replay = container_replay;
-		this.party_popper = party_popper;
 		this.container_winningPopUp = container_winningPopUp;
 
 		this.events.emit("scene-awake");
@@ -72,8 +65,6 @@ class LevelUp extends Phaser.Scene {
 	replayButton;
 	/** @type {Phaser.GameObjects.Container} */
 	container_replay;
-	/** @type {Phaser.GameObjects.Image} */
-	party_popper;
 	/** @type {Phaser.GameObjects.Container} */
 	container_winningPopUp;
 
@@ -86,13 +77,54 @@ class LevelUp extends Phaser.Scene {
 		this.oSoundManager = new SoundManager(this);
 		this.oTweenManager = new TweenManager(this);
 
-		this.oTweenManager.winningAnimation(this.party_popper, 1.5);
+		this.confetti();
 		this.oTweenManager.winningAnimation(this.container_winningPopUp, 1);
 		this.replayButton.setInteractive().on("pointerdown", () => {
-			this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
 			this.oTweenManager.buttonAnimation(this.container_replay);
 			nRetryCount = 3;
 		})
+	}
+
+	confetti() {
+		const count = 100,
+			defaults = {
+				origin: { y: 0.7 },
+			};
+
+		function fire(particleRatio, opts) {
+			confetti(
+				Object.assign({}, defaults, opts, {
+					particleCount: Math.floor(count * particleRatio),
+				})
+			);
+		}
+
+		fire(0.5, {
+			spread: 30,
+			startVelocity: 55,
+		});
+
+		fire(0.4, {
+			spread: 45,
+		});
+
+		fire(0.7, {
+			spread: 55,
+			decay: 0.91,
+			scalar: 0.8,
+		});
+
+		fire(0.2, {
+			spread: 65,
+			startVelocity: 25,
+			decay: 0.92,
+			scalar: 1.2,
+		});
+
+		fire(0.2, {
+			spread: 65,
+			startVelocity: 45,
+		});
 	}
 
 	/* END-USER-CODE */
