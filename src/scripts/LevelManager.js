@@ -143,7 +143,7 @@ class LevelManager {
                         y: 449,
                     },
                     ball_3: {
-                        x: 1025,
+                        x: 1028,
                         y: 715,
                     },
                     ball_4: {
@@ -426,7 +426,7 @@ class LevelManager {
                         flip: false
                     },
                     whole_6: {
-                        x: 1200,
+                        x: 1199,
                         y: 396,
                         texture: "whole_2",
                         flip: false

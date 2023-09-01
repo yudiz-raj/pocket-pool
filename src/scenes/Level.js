@@ -2,6 +2,8 @@
 let interactiveArea;
 let nMove = 0;
 let nScore = 0;
+let nLevelCount = 1;
+let nRetryCount = 3;
 /* START OF COMPILED CODE */
 
 class Level extends Phaser.Scene {
@@ -28,24 +30,27 @@ class Level extends Phaser.Scene {
 		const container_border = this.add.container(0, 0);
 		body.add(container_border);
 
+		// rectangle_3
+		const rectangle_3 = this.add.rectangle(966, 224, 128, 128);
+		rectangle_3.name = "rectangle_3";
+		rectangle_3.scaleX = 6;
+		rectangle_3.scaleY = 0.5;
+		rectangle_3.visible = false;
+		rectangle_3.isFilled = true;
+		container_border.add(rectangle_3);
+
 		// rectangle_1
-		const rectangle_1 = this.add.rectangle(966, 224, 128, 128);
+		const rectangle_1 = this.add.rectangle(966, 834, 128, 128);
+		rectangle_1.name = "rectangle_1";
 		rectangle_1.scaleX = 6;
 		rectangle_1.scaleY = 0.5;
 		rectangle_1.visible = false;
 		rectangle_1.isFilled = true;
 		container_border.add(rectangle_1);
 
-		// rectangle
-		const rectangle = this.add.rectangle(966, 834, 128, 128);
-		rectangle.scaleX = 6;
-		rectangle.scaleY = 0.5;
-		rectangle.visible = false;
-		rectangle.isFilled = true;
-		container_border.add(rectangle);
-
 		// rectangle_2
 		const rectangle_2 = this.add.rectangle(719, 548, 128, 128);
+		rectangle_2.name = "rectangle_2";
 		rectangle_2.scaleX = 7;
 		rectangle_2.scaleY = 0.5;
 		rectangle_2.angle = 90;
@@ -53,14 +58,15 @@ class Level extends Phaser.Scene {
 		rectangle_2.isFilled = true;
 		container_border.add(rectangle_2);
 
-		// rectangle_3
-		const rectangle_3 = this.add.rectangle(1210, 548, 128, 128);
-		rectangle_3.scaleX = 7;
-		rectangle_3.scaleY = 0.5;
-		rectangle_3.angle = 90;
-		rectangle_3.visible = false;
-		rectangle_3.isFilled = true;
-		container_border.add(rectangle_3);
+		// rectangle_4
+		const rectangle_4 = this.add.rectangle(1212, 548, 128, 128);
+		rectangle_4.name = "rectangle_4";
+		rectangle_4.scaleX = 7;
+		rectangle_4.scaleY = 0.5;
+		rectangle_4.angle = 90;
+		rectangle_4.visible = false;
+		rectangle_4.isFilled = true;
+		container_border.add(rectangle_4);
 
 		// container_levelTag
 		const container_levelTag = this.add.container(0, 0);
@@ -100,7 +106,7 @@ class Level extends Phaser.Scene {
 		body.add(container_retry);
 
 		// retryButton
-		const retryButton = this.add.image(-0.5488124904029519, 4.459141747085141, "Button");
+		const retryButton = this.add.image(-1, 11, "Button");
 		container_retry.add(retryButton);
 
 		// retryCount
@@ -110,13 +116,13 @@ class Level extends Phaser.Scene {
 		container_retry.add(retryCount);
 
 		// retry_icon
-		const retry_icon = this.add.image(-52, -4, "Retry-icon");
+		const retry_icon = this.add.image(-76, -4, "Retry-icon");
 		retry_icon.scaleX = 0.8;
 		retry_icon.scaleY = 0.8;
 		container_retry.add(retry_icon);
 
 		// multiply_icon
-		const multiply_icon = this.add.image(6, -4, "multiply-icon");
+		const multiply_icon = this.add.image(-5, -4, "multiply-icon");
 		multiply_icon.scaleX = 0.5;
 		multiply_icon.scaleY = 0.5;
 		container_retry.add(multiply_icon);
@@ -129,6 +135,35 @@ class Level extends Phaser.Scene {
 		arrow.visible = false;
 		body.add(arrow);
 
+		// container_setting
+		const container_setting = this.add.container(1283, -12);
+		body.add(container_setting);
+
+		// white_Background
+		const white_Background = this.add.image(0, 27, "White-Background");
+		white_Background.scaleX = 1.1;
+		white_Background.scaleY = 1.1;
+		container_setting.add(white_Background);
+
+		// sound_button
+		const sound_button = this.add.image(0, -4, "Sound");
+		sound_button.scaleX = 0.9;
+		sound_button.scaleY = 0.9;
+		container_setting.add(sound_button);
+
+		// info_button
+		const info_button = this.add.image(0, 59, "Info");
+		info_button.scaleX = 0.9;
+		info_button.scaleY = 0.9;
+		container_setting.add(info_button);
+
+		// setting_button
+		const setting_button = this.add.image(1284.4163525284016, 54.98479461669922, "Settings");
+		setting_button.scaleX = 1.2;
+		setting_button.scaleY = 1.2;
+		setting_button.setOrigin(0.5184419182758973, 0.5128228598007214);
+		body.add(setting_button);
+
 		this.container_border = container_border;
 		this.levelNumber = levelNumber;
 		this.table = table;
@@ -137,6 +172,10 @@ class Level extends Phaser.Scene {
 		this.retryCount = retryCount;
 		this.container_retry = container_retry;
 		this.arrow = arrow;
+		this.sound_button = sound_button;
+		this.info_button = info_button;
+		this.container_setting = container_setting;
+		this.setting_button = setting_button;
 
 		this.events.emit("scene-awake");
 	}
@@ -157,6 +196,14 @@ class Level extends Phaser.Scene {
 	container_retry;
 	/** @type {Phaser.GameObjects.Image} */
 	arrow;
+	/** @type {Phaser.GameObjects.Image} */
+	sound_button;
+	/** @type {Phaser.GameObjects.Image} */
+	info_button;
+	/** @type {Phaser.GameObjects.Container} */
+	container_setting;
+	/** @type {Phaser.GameObjects.Image} */
+	setting_button;
 
 	/* START-USER-CODE */
 
@@ -176,7 +223,18 @@ class Level extends Phaser.Scene {
     this.levelNumber.setText(nLevelCount);
     this.retryCount.setText(nRetryCount);
 
+
+		// masking 
+		let settingShape = this.make.graphics();
+		settingShape.fillEllipse(1300, 150, 150, 200, 32);
+		const settingMask = settingShape.createGeometryMask();
+		this.container_setting.setMask(settingMask);
+
+
     this.levelSelecter();
+    this.setting_button.setInteractive().on("pointerdown",()=>{
+      this.oTweenManager.settingMaskAnimation();
+    })
     this.input.keyboard.createCursorKeys();
     this.input.keyboard.on("keydown", this.handleKeyDown, this);
     this.scroll();
@@ -198,9 +256,9 @@ class Level extends Phaser.Scene {
     this.holesGroup.children.entries.forEach((hole) => {
       this.physics.add.existing(hole, true);
       if (hole.texture.key == "whole_1") {
-        hole.body.setSize(40, 60);
+        hole.body.setSize(40, 55);
       } else {
-        hole.body.setSize(60, 40);
+        hole.body.setSize(55, 40);
       }
     });
 
@@ -225,10 +283,7 @@ class Level extends Phaser.Scene {
     });
 
     // IndexBall and ball collider
-    this.physics.add.collider(
-      this.indexBall,
-      this.ballsGroup,
-      (indexBall, ball) => {
+    this.physics.add.collider( this.indexBall, this.ballsGroup, (indexBall, ball) => {
         this.indexBall.setVelocity(0, 0);
         this.indexBall.setScale(1, 1);
         this.input.keyboard.enabled = true;
@@ -253,11 +308,27 @@ class Level extends Phaser.Scene {
       }
     });
     //Ball and border collider
-    this.physics.add.collider(this.ballsGroup, this.borderGroup);
+    this.physics.add.collider(this.ballsGroup, this.borderGroup, (ball, border) => {
+      switch(border.name){
+        case "rectangle_1":
+          ball.setPosition(ball.x, ball.y - 14);
+          break;
+        case "rectangle_2":
+          ball.setPosition(ball.x + 14, ball.y);
+          break;
+        case "rectangle_3":
+          ball.setPosition(ball.x, ball.y + 14);
+          break;
+        case "rectangle_4":
+          ball.setPosition(ball.x - 14, ball.y);
+          break;
+      }
+    });
     //IndexBall and holes collider
     this.physics.add.collider(this.indexBall, this.holesGroup, () => {
       nMove = 0;
       nScore = 0;
+      nRetryCount -= 1;
       this.indexBall.setScale(1, 1);
       this.indexBall.destroy();
       this.tryAgainText = this.add.text(971, 500, "Try Again");
@@ -410,9 +481,9 @@ class Level extends Phaser.Scene {
     this.retryButton.setInteractive();
 
     this.stick = this.add.image(this.indexBall.x, this.indexBall.y, "stick");
-		this.stick.setOrigin(0.5, 1);
+		this.stick.setOrigin(0, 0.5);
+    this.stick.setPosition(this.indexBall.x, this.indexBall.y).setAngle(angle - 180).setVisible(true).setDepth(100);
     this.arrow.setPosition(this.indexBall.x, this.indexBall.y).setAngle(angle).setVisible(true);
-    this.stick.setPosition(this.indexBall.x, this.indexBall.y).setAngle(angle - 90).setVisible(true).setDepth(100);
 
     if(nMove > nScore + 3){
       this.oTweenManager.shakeAnimation();
@@ -423,9 +494,9 @@ class Level extends Phaser.Scene {
       this.indexBall.setVelocityX(velocityX);
       this.indexBall.setVelocityY(velocityY);
       this.indexBall.setScale(scaleX, scaleY);
+      this.stick.destroy();
     }, 100);
     setTimeout(() => {
-      this.stick.destroy();
       switch (angle) {
         case -90:
           this.indexBall.setPosition(this.indexBall.x, this.indexBall.y + 14);

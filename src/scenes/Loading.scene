@@ -19,28 +19,68 @@
                     "id": "de3bfdf1-a824-431e-8b58-cb0fe9d748a5",
                     "label": "splash_screen",
                     "texture": {
-                        "key": "Splash-screen"
+                        "key": "Splash-screen-2"
                     },
                     "x": 960,
                     "y": 540
                 },
                 {
-                    "type": "Text",
-                    "id": "e16d6ff3-602c-4c54-9331-17ea36d06be4",
-                    "label": "playButton",
+                    "type": "Image",
+                    "id": "bc5392ed-9ea7-4b41-a108-a0c151e9a9fc",
+                    "label": "stick",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "stick"
+                    },
+                    "x": 940,
+                    "y": 300,
+                    "scaleX": 1.8,
+                    "scaleY": 2.3,
+                    "angle": 163.5
+                },
+                {
+                    "type": "Image",
+                    "id": "17ad2dab-af89-4fdc-a6d1-8d712b175d17",
+                    "label": "logo_2",
+                    "texture": {
+                        "key": "Logo-2"
+                    },
+                    "x": 925,
+                    "y": 275
+                },
+                {
+                    "type": "Container",
+                    "id": "d60e647e-f329-45b1-ac58-7cb318b02453",
+                    "label": "container_playButton",
                     "useGameObjectName": true,
                     "scope": "CLASS",
                     "x": 960,
-                    "y": 1016,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "text": "Tap to Play ",
-                    "align": "center",
-                    "fontFamily": "Alfa Slab One",
-                    "fontSize": "80px",
-                    "shadow.offsetX": 15,
-                    "shadow.offsetY": 15,
-                    "shadow.color": "#525252ff"
+                    "y": 988,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "8e729807-e81b-4dca-8da2-b5a7c9346df4",
+                            "label": "playButton",
+                            "useGameObjectName": true,
+                            "scope": "CLASS",
+                            "texture": {
+                                "key": "Start"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "id": "26478a3d-426b-4fb6-b4cd-9010fb978bf4",
+                    "label": "white_Ball",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "White-Ball"
+                    },
+                    "x": 989,
+                    "y": 311,
+                    "scaleX": 0.7,
+                    "scaleY": 0.7
                 }
             ]
         }

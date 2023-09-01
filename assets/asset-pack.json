@@ -59,11 +59,6 @@
                 "key": "Button"
             },
             {
-                "url": "assets/images/carpet.png",
-                "type": "image",
-                "key": "carpet"
-            },
-            {
                 "url": [
                     "assets/sounds/Click.mp3"
                 ],
@@ -71,9 +66,14 @@
                 "key": "Click"
             },
             {
-                "url": "assets/images/winning-screen/Congratulation-text.png",
+                "url": "assets/images/winning-screen/Congratulations.png",
                 "type": "image",
-                "key": "Congratulation-text"
+                "key": "Congratulations"
+            },
+            {
+                "url": "assets/images/Info.png",
+                "type": "image",
+                "key": "Info"
             },
             {
                 "url": "src/scenes/Level.js",
@@ -108,14 +108,24 @@
                 "key": "Loading"
             },
             {
+                "url": "assets/images/Logo-2.png",
+                "type": "image",
+                "key": "Logo-2"
+            },
+            {
                 "url": "assets/images/multiply-icon.png",
                 "type": "image",
                 "key": "multiply-icon"
             },
             {
-                "url": "assets/images/winning-screen/party-popper.png",
+                "url": "assets/images/Mute.png",
                 "type": "image",
-                "key": "party-popper"
+                "key": "Mute"
+            },
+            {
+                "url": "assets/images/Play-Again.png",
+                "type": "image",
+                "key": "Play-Again"
             },
             {
                 "url": "assets/images/Retry-icon.png",
@@ -123,9 +133,19 @@
                 "key": "Retry-icon"
             },
             {
+                "url": "assets/images/Settings.png",
+                "type": "image",
+                "key": "Settings"
+            },
+            {
                 "url": "src/scripts/SocketManager.js",
                 "type": "script",
                 "key": "SocketManager"
+            },
+            {
+                "url": "assets/images/Sound.png",
+                "type": "image",
+                "key": "Sound"
             },
             {
                 "url": "src/scripts/SoundManager.js",
@@ -136,6 +156,16 @@
                 "url": "assets/images/Splash-screen.png",
                 "type": "image",
                 "key": "Splash-screen"
+            },
+            {
+                "url": "assets/images/Splash-screen-2.png",
+                "type": "image",
+                "key": "Splash-screen-2"
+            },
+            {
+                "url": "assets/images/Start.png",
+                "type": "image",
+                "key": "Start"
             },
             {
                 "url": "assets/images/stick.png",
@@ -163,6 +193,16 @@
                 "key": "W-Ball"
             },
             {
+                "url": "assets/images/White-Background.png",
+                "type": "image",
+                "key": "White-Background"
+            },
+            {
+                "url": "assets/images/White-Ball.png",
+                "type": "image",
+                "key": "White-Ball"
+            },
+            {
                 "url": "assets/images/Wholes/Whole 1.png",
                 "type": "image",
                 "key": "whole_1"
@@ -176,11 +216,6 @@
                 "url": "assets/images/winning-screen/winning-bg.png",
                 "type": "image",
                 "key": "winning-bg"
-            },
-            {
-                "url": "assets/images/winning-screen/you-won.png",
-                "type": "image",
-                "key": "you-won"
             }
         ]
     },

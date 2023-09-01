@@ -30,7 +30,7 @@
                     "label": "container_replay",
                     "useGameObjectName": true,
                     "scope": "CLASS",
-                    "x": 962,
+                    "x": 960,
                     "y": 991,
                     "list": [
                         {
@@ -39,59 +39,23 @@
                             "label": "replayButton",
                             "scope": "CLASS",
                             "texture": {
-                                "key": "Button"
+                                "key": "Play-Again"
                             },
-                            "x": -1.94616679474359,
-                            "y": 7.980522768212495
-                        },
-                        {
-                            "type": "Text",
-                            "id": "d83f146b-0fd7-4148-8c7b-8d67138305fe",
-                            "label": "retryText",
-                            "x": -1.94616679474359,
-                            "y": -0.019477231787504934,
-                            "originX": 0.5,
-                            "originY": 0.5,
-                            "text": "REPLAY",
-                            "align": "center",
-                            "fontFamily": "Alfa Slab One",
-                            "fontSize": "38px"
+                            "x": 22,
+                            "y": -11
                         }
                     ]
                 },
                 {
-                    "type": "Container",
-                    "id": "edd218f0-f76c-4597-9608-02a36985c77d",
-                    "label": "container_winningPopUp",
+                    "type": "Image",
+                    "id": "68b26f0b-8224-4cfd-aac2-4505b22c773a",
+                    "label": "congratulations",
                     "scope": "CLASS",
-                    "x": 955,
-                    "y": 598,
-                    "scaleX": 3,
-                    "scaleY": 3,
-                    "list": [
-                        {
-                            "type": "Image",
-                            "id": "1ef1f2f3-001f-4108-9726-d3ad4bc0fa5f",
-                            "label": "congratulation_text",
-                            "texture": {
-                                "key": "Congratulation-text"
-                            },
-                            "x": 9.092519290992072,
-                            "y": -347.3582023046822,
-                            "scaleX": 1.5,
-                            "scaleY": 1.5
-                        },
-                        {
-                            "type": "Image",
-                            "id": "901239e5-d8a2-4686-adce-d50f65c99d96",
-                            "label": "you_won_txt",
-                            "texture": {
-                                "key": "you-won"
-                            },
-                            "x": 16.092519290992072,
-                            "y": -63.35820230468221
-                        }
-                    ]
+                    "texture": {
+                        "key": "Congratulations"
+                    },
+                    "x": 960,
+                    "y": -187
                 }
             ]
         }

@@ -26,7 +26,7 @@ class Preload extends Phaser.Scene {
 		this.add.image(960, 540, "preload-screen");
 
 		// progress
-		const progress = this.add.text(960, 1016, "", {});
+		const progress = this.add.text(960, 988, "", {});
 		progress.setOrigin(0.5, 0.5);
 		progress.text = "0%";
 		progress.setStyle({ "fontFamily": "Alfa Slab One", "fontSize": "54px" });
