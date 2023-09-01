@@ -25,6 +25,7 @@ class Loading extends Phaser.Scene {
 
 		// playButton
 		const playButton = this.add.text(960, 1016, "", {});
+		playButton.name = "playButton";
 		playButton.setOrigin(0.5, 0.5);
 		playButton.text = "Tap to Play ";
 		playButton.setStyle({ "align": "center", "fontFamily": "Alfa Slab One", "fontSize": "80px", "shadow.offsetX":15,"shadow.offsetY":15,"shadow.color": "#525252ff" });
@@ -47,12 +48,10 @@ class Loading extends Phaser.Scene {
 		this.oSoundManager = new SoundManager(this);
 		this.oTweenManager = new TweenManager(this);
 
-		setInterval(() => {
-			this.oTweenManager.popUpAnimation(this.playButton);
-		}, 1000);
+		this.oTweenManager.popUpAnimation(this.playButton, 350);
 
 		this.input.on("pointerdown", () => {
-			this.scene.stop("Loading");
+			this.scene.stop();
 			setTimeout(() => {
 				this.scene.start("Level");
 			}, 100);

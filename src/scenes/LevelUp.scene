@@ -28,6 +28,7 @@
                     "type": "Container",
                     "id": "df09f768-03f5-4565-b2f2-18bd980e759b",
                     "label": "container_replay",
+                    "useGameObjectName": true,
                     "scope": "CLASS",
                     "x": 962,
                     "y": 991,

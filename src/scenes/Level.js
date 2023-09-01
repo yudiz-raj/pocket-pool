@@ -96,6 +96,7 @@ class Level extends Phaser.Scene {
 
 		// container_retry
 		const container_retry = this.add.container(960.5487956409165, 968.5408182439949);
+		container_retry.name = "container_retry";
 		body.add(container_retry);
 
 		// retryButton
@@ -184,7 +185,7 @@ class Level extends Phaser.Scene {
       if (nRetryCount > 0) {
         nMove = 0;
         nScore = 0;
-        this.oTweenManager.buttonAnimation(this.container_retry);
+        this.oTweenManager.popUpAnimation(this.container_retry, 80);
         nRetryCount -= 1;
         this.retryCount.setText(nRetryCount);
       }
@@ -241,6 +242,7 @@ class Level extends Phaser.Scene {
       this.ballsGroup.children.entries.forEach((ball) => {
         if (ball.name == number.name) {
           ball.destroy();
+          this.stick.destroy();
           nScore++;
           nMove = nScore;
         }
@@ -258,10 +260,9 @@ class Level extends Phaser.Scene {
       nScore = 0;
       this.indexBall.setScale(1, 1);
       this.indexBall.destroy();
-      this.tryAgainImage = this.add
-        .image(971, 500, "Try-again")
-        .setScale(0.8, 0.8);
-      this.oTweenManager.popUpAnimation(this.tryAgainImage);
+      this.tryAgainText = this.add.text(971, 500, "Try Again");
+      this.tryAgainText.setFontFamily("Alfa Slab One").setOrigin(0.5, 0.5).setFontSize(60).setName("Try Again").setAngle(-10);
+      this.oTweenManager.popUpAnimation(this.tryAgainText, 350);
     });
 
     let shape = this.make.graphics();
@@ -301,11 +302,7 @@ class Level extends Phaser.Scene {
     }
 
     for (let i = 0; i < numberOfHoles; i++) {
-      this.hole = this.add.image(
-        this.holesData[`whole_${i + 1}`].x,
-        this.holesData[`whole_${i + 1}`].y,
-        this.holesData[`whole_${i + 1}`].texture
-      );
+      this.hole = this.add.image(this.holesData[`whole_${i + 1}`].x, this.holesData[`whole_${i + 1}`].y, this.holesData[`whole_${i + 1}`].texture);
       if (this.holesData[`whole_${i + 1}`].texture == "whole_1") {
         this.hole.setFlipY(this.holesData[`whole_${i + 1}`].flip);
       } else {
@@ -428,7 +425,7 @@ class Level extends Phaser.Scene {
       this.indexBall.setScale(scaleX, scaleY);
     }, 100);
     setTimeout(() => {
-      this.stick.setVisible(false);
+      this.stick.destroy();
       switch (angle) {
         case -90:
           this.indexBall.setPosition(this.indexBall.x, this.indexBall.y + 14);

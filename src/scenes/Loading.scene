@@ -28,6 +28,7 @@
                     "type": "Text",
                     "id": "e16d6ff3-602c-4c54-9331-17ea36d06be4",
                     "label": "playButton",
+                    "useGameObjectName": true,
                     "scope": "CLASS",
                     "x": 960,
                     "y": 1016,

@@ -25,6 +25,7 @@ class LevelUp extends Phaser.Scene {
 
 		// container_replay
 		const container_replay = this.add.container(962, 991);
+		container_replay.name = "container_replay";
 		body.add(container_replay);
 
 		// replayButton
@@ -80,7 +81,7 @@ class LevelUp extends Phaser.Scene {
 		this.confetti();
 		this.oTweenManager.winningAnimation(this.container_winningPopUp, 1);
 		this.replayButton.setInteractive().on("pointerdown", () => {
-			this.oTweenManager.buttonAnimation(this.container_replay);
+			this.oTweenManager.popUpAnimation(this.container_replay, 80);
 			nRetryCount = 3;
 		})
 	}

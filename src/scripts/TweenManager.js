@@ -3,39 +3,26 @@ class TweenManager {
         this.oScene = oScene;
     }
 
-    buttonAnimation(target) {
-
-        this.oScene.add.tween({
-            targets: target,
-            scaleX: "*=0.8",
-            scaleY: "*=0.8",
-            duration: 80,
-            yoyo: true,
-            onComplete: () => {
-                if (target.list[1].text == nRetryCount) {
-                    this.oScene.scene.restart("Level");
-                }
-                if (target.list[1].text == "REPLAY") {
-                    this.oScene.scene.stop("LevelUp");
-                    this.oScene.scene.start("Loading");
-                }
-            }
-        });
-    }
-
-    popUpAnimation(target) {
+    popUpAnimation(target, duration) {
         this.oScene.add.tween({
             targets: target,
             scaleX: "*=0.8",
             scaleY: "*=0.8",
             ease: "Linear",
-            duration: 350,
+            duration: duration,
             yoyo: true,
             onComplete: () => {
-                if (target.texture.key == "Try-again") {
+                if (target.name == "Try Again" || target.name == "container_retry") {
                     setTimeout(() => {
                         this.oScene.scene.restart("Level");
                     }, 1000);
+                }
+                if(target.nama == "playButton"){
+                    this.popUpAnimation(target);
+                }
+                if (target.name == "container_replay") {
+                    this.oScene.scene.stop("LevelUp");
+                    this.oScene.scene.start("Loading");
                 }
             }
         });
@@ -55,19 +42,19 @@ class TweenManager {
     shakeAnimation() {
         this.oScene.add.tween({
             targets: this.oScene.container_retry,
-            angle: -15,
+            angle: -5,
             duration: 30,
             ease: "Power2",
             yoyo: true,
-            repeate: true,
+            repeate: 2,
             onComplete: () => {
                 this.oScene.add.tween({
                     targets: this.oScene.container_retry,
-                    angle: 15,
+                    angle: 5,
                     duration: 30,
                     ease: "Power2",
                     yoyo: true,
-                    repeate: true,
+                    repeate: 2,
                 });
             }
         });

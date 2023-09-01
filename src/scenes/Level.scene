@@ -161,6 +161,7 @@
                     "type": "Container",
                     "id": "fd016895-b1b7-429b-b891-185ad9eece5f",
                     "label": "container_retry",
+                    "useGameObjectName": true,
                     "scope": "CLASS",
                     "x": 960.5487956409165,
                     "y": 968.5408182439949,
