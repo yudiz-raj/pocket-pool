@@ -10,10 +10,10 @@ class LevelManager {
                     },
                     ball_1: {
                         x: 966,
-                        y: 449,
+                        y: 447,
                     },
                     ball_2: {
-                        x: 850,
+                        x: 844,
                         y: 502,
                     },
                 },
@@ -40,10 +40,10 @@ class LevelManager {
                     },
                     ball_1: {
                         x: 966,
-                        y: 449,
+                        y: 447,
                     },
                     ball_2: {
-                        x: 850,
+                        x: 844,
                         y: 502,
                     },
                     ball_3: {
@@ -75,23 +75,23 @@ class LevelManager {
             {
                 oBalls: {
                     indexBall: {
-                        x: 849,
-                        y: 715,
+                        x: 844,
+                        y: 718,
                     },
                     ball_1: {
-                        x: 849,
-                        y: 502,
+                        x: 844,
+                        y: 501,
                     },
                     ball_2: {
-                        x: 1080,
+                        x: 1084,
                         y: 556,
                     },
                     ball_3: {
                         x: 1025,
-                        y: 715,
+                        y: 718,
                     },
                     ball_4: {
-                        x: 907,
+                        x: 905,
                         y: 663,
                     },
                 },
@@ -131,27 +131,27 @@ class LevelManager {
             {
                 oBalls: {
                     indexBall: {
-                        x: 966,
+                        x: 965,
                         y: 555,
                     },
                     ball_1: {
-                        x: 966,
+                        x: 965,
                         y: 394,
                     },
                     ball_2: {
-                        x: 1079,
+                        x: 1083,
                         y: 449,
                     },
                     ball_3: {
                         x: 1028,
-                        y: 715,
+                        y: 720,
                     },
                     ball_4: {
-                        x: 908,
+                        x: 901,
                         y: 663,
                     },
                     ball_5: {
-                        x: 849,
+                        x: 844,
                         y: 449,
                     },
                 },
@@ -211,8 +211,8 @@ class LevelManager {
                         y: 609,
                     },
                     ball_2: {
-                        x: 908,
-                        y: 663,
+                        x: 902,
+                        y: 667,
                     },
                     ball_3: {
                         x: 966,
@@ -223,7 +223,7 @@ class LevelManager {
                         y: 502,
                     },
                     ball_5: {
-                        x: 849,
+                        x: 844,
                         y: 449,
                     },
                     ball_6: {
@@ -291,7 +291,7 @@ class LevelManager {
                         y: 395,
                     },
                     ball_3: {
-                        x: 965,
+                        x: 964,
                         y: 449,
                     },
                     ball_4: {
@@ -299,7 +299,7 @@ class LevelManager {
                         y: 555,
                     },
                     ball_5: {
-                        x: 849,
+                        x: 844,
                         y: 555,
                     },
                     ball_6: {
@@ -308,7 +308,7 @@ class LevelManager {
                     },
                     ball_7: {
                         x: 908,
-                        y: 716,
+                        y: 720,
                     },
                 },
                 oHoles: {
@@ -366,19 +366,19 @@ class LevelManager {
                 oBalls: {
 
                     indexBall: {
-                        x: 850,
-                        y: 715,
+                        x: 844,
+                        y: 718,
                     },
                     ball_1: {
                         x: 966,
-                        y: 339,
+                        y: 338,
                     },
                     ball_2: {
                         x: 907,
                         y: 609,
                     },
                     ball_3: {
-                        x: 850,
+                        x: 844,
                         y: 396,
                     },
                     ball_4: {
@@ -387,7 +387,7 @@ class LevelManager {
                     },
                     ball_5: {
                         x: 1084,
-                        y: 715,
+                        y: 719,
                     },
                     ball_6: {
                         x: 1084,
@@ -454,7 +454,7 @@ class LevelManager {
             {
                 oBalls: {
                     indexBall: {
-                        x: 966,
+                        x: 964,
                         y: 502,
                     },
                     ball_1: {
@@ -462,7 +462,7 @@ class LevelManager {
                         y: 341,
                     },
                     ball_2: {
-                        x: 1082,
+                        x: 1081,
                         y: 609,
                     },
                     ball_3: {
@@ -474,12 +474,12 @@ class LevelManager {
                         y: 715,
                     },
                     ball_5: {
-                        x: 1025,
+                        x: 1024,
                         y: 502,
 
                     },
                     ball_6: {
-                        x: 849,
+                        x: 844,
                         y: 502,
                     },
                 },
@@ -531,19 +531,19 @@ class LevelManager {
             {
                 oBalls: {
                     indexBall: {
-                        x: 850,
+                        x: 844,
                         y: 396,
                     },
                     ball_1: {
                         x: 966,
-                        y: 665,
+                        y: 666,
                     },
                     ball_2: {
                         x: 907,
                         y: 715,
                     },
                     ball_3: {
-                        x: 850,
+                        x: 849,
                         y: 609,
                     },
                     ball_4: {
@@ -616,14 +616,14 @@ class LevelManager {
                     },
                     ball_3: {
                         x: 966,
-                        y: 340,
+                        y: 339,
                     },
                     ball_4: {
                         x: 1025,
-                        y: 340,
+                        y: 339,
                     },
                     ball_5: {
-                        x: 1084,
+                        x: 1085,
                         y: 609,
                     },
                     ball_6: {

@@ -12,12 +12,14 @@ class TweenManager {
             duration: duration,
             yoyo: true,
             onComplete: () => {
-                if(target.name == "container_playButton"){
+                if (target.name == "container_playButton") {
                     this.oScene.scene.stop("Loading");
                 }
 
                 if (target.name == "Try Again" || target.name == "container_retry") {
                     setTimeout(() => {
+                        this.oScene.input.keyboard.enabled = true;
+                        this.oScene.interactiveArea.setInteractive();
                         this.oScene.scene.restart("Level");
                     }, 1000);
                 }
@@ -27,6 +29,17 @@ class TweenManager {
                 }
             }
         });
+    }
+
+    loadingAnimation() {
+        this.oScene.add.tween({
+            targets: this.oScene.stick,
+            x: 1000,
+            y: 280,
+            duration: 1500,
+            yoyo: true,
+            repeat: -1
+        })
     }
 
     settingMaskAnimation() {
@@ -47,7 +60,7 @@ class TweenManager {
             onComplete: () => {
                 this.oScene.setting_button.setInteractive();
             }
-            
+
         });
         this.oScene.add.tween({
             targets: this.oScene.container_setting,
@@ -57,10 +70,10 @@ class TweenManager {
             onComplete: () => {
                 this.oScene.info_button.setInteractive();
                 this.oScene.sound_button.setInteractive().on("pointerdown", () => {
-                    if(this.oScene.sound_button.texture.key == "Sound"){
+                    if (this.oScene.sound_button.texture.key == "Sound") {
                         this.oScene.sound_button.setTexture("Mute");
                     }
-                    else{
+                    else {
                         this.oScene.sound_button.setTexture("Sound");
                     }
                 });

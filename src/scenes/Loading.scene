@@ -25,6 +25,27 @@
                     "y": 540
                 },
                 {
+                    "type": "Container",
+                    "id": "d60e647e-f329-45b1-ac58-7cb318b02453",
+                    "label": "container_playButton",
+                    "useGameObjectName": true,
+                    "scope": "CLASS",
+                    "x": 960,
+                    "y": 988,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "8e729807-e81b-4dca-8da2-b5a7c9346df4",
+                            "label": "playButton",
+                            "useGameObjectName": true,
+                            "scope": "CLASS",
+                            "texture": {
+                                "key": "Start"
+                            }
+                        }
+                    ]
+                },
+                {
                     "type": "Image",
                     "id": "bc5392ed-9ea7-4b41-a108-a0c151e9a9fc",
                     "label": "stick",
@@ -45,29 +66,8 @@
                     "texture": {
                         "key": "Logo-2"
                     },
-                    "x": 925,
-                    "y": 275
-                },
-                {
-                    "type": "Container",
-                    "id": "d60e647e-f329-45b1-ac58-7cb318b02453",
-                    "label": "container_playButton",
-                    "useGameObjectName": true,
-                    "scope": "CLASS",
-                    "x": 960,
-                    "y": 988,
-                    "list": [
-                        {
-                            "type": "Image",
-                            "id": "8e729807-e81b-4dca-8da2-b5a7c9346df4",
-                            "label": "playButton",
-                            "useGameObjectName": true,
-                            "scope": "CLASS",
-                            "texture": {
-                                "key": "Start"
-                            }
-                        }
-                    ]
+                    "x": 926,
+                    "y": 277
                 },
                 {
                     "type": "Image",

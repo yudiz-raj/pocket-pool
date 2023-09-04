@@ -53,7 +53,6 @@ class LevelUp extends Phaser.Scene {
 	/* START-USER-CODE */
 
 	// Write your code here
-
 	create() {
 		this.editorCreate();
 		this.oSoundManager = new SoundManager(this);
@@ -62,7 +61,6 @@ class LevelUp extends Phaser.Scene {
 		this.oTweenManager.winningAnimation(this.congratulations);
 		this.replayButton.setInteractive().on("pointerdown", () => {
 			this.oTweenManager.popUpAnimation(this.container_replay, 80);
-			nRetryCount = 3;
 		})
 	}
 

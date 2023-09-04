@@ -1,5 +1,4 @@
 // You can write more code here
-let interactiveArea;
 let nMove = 0;
 let nScore = 0;
 let nLevelCount = 1;
@@ -223,21 +222,15 @@ class Level extends Phaser.Scene {
     this.levelNumber.setText(nLevelCount);
     this.retryCount.setText(nRetryCount);
 
-
-		// masking 
-		let settingShape = this.make.graphics();
-		settingShape.fillEllipse(1300, 150, 150, 200, 32);
-		const settingMask = settingShape.createGeometryMask();
-		this.container_setting.setMask(settingMask);
-
+    this.input.keyboard.createCursorKeys();
+    this.input.keyboard.enabled = true;
+    this.input.keyboard.on("keydown", this.handleKeyDown, this);
+    this.scroll();
 
     this.levelSelecter();
     this.setting_button.setInteractive().on("pointerdown",()=>{
       this.oTweenManager.settingMaskAnimation();
     })
-    this.input.keyboard.createCursorKeys();
-    this.input.keyboard.on("keydown", this.handleKeyDown, this);
-    this.scroll();
 
     this.retryButton.on("pointerdown", () => {
       if (nRetryCount > 0) {
@@ -246,6 +239,7 @@ class Level extends Phaser.Scene {
         this.oTweenManager.popUpAnimation(this.container_retry, 80);
         nRetryCount -= 1;
         this.retryCount.setText(nRetryCount);
+        this.retryButton.disableInteractive();
       }
     });
 
@@ -256,9 +250,9 @@ class Level extends Phaser.Scene {
     this.holesGroup.children.entries.forEach((hole) => {
       this.physics.add.existing(hole, true);
       if (hole.texture.key == "whole_1") {
-        hole.body.setSize(40, 55);
+        hole.body.setSize(40, 60);
       } else {
-        hole.body.setSize(55, 40);
+        hole.body.setSize(60, 40);
       }
     });
 
@@ -279,15 +273,13 @@ class Level extends Phaser.Scene {
       this.indexBall.setScale(1, 1);
       this.indexBall.setVelocity(0, 0);
       this.input.keyboard.enabled = true;
-      interactiveArea.setInteractive();
+      this.interactiveArea.setInteractive();
     });
 
     // IndexBall and ball collider
     this.physics.add.collider( this.indexBall, this.ballsGroup, (indexBall, ball) => {
         this.indexBall.setVelocity(0, 0);
         this.indexBall.setScale(1, 1);
-        this.input.keyboard.enabled = true;
-        interactiveArea.setInteractive();
       }
     );
     // Ball and ball collider
@@ -300,6 +292,8 @@ class Level extends Phaser.Scene {
           this.stick.destroy();
           nScore++;
           nMove = nScore;
+          this.input.keyboard.enabled = true;
+          this.interactiveArea.setInteractive();
         }
       });
       if (this.ballsGroup.children.entries.length == 0) {
@@ -309,6 +303,8 @@ class Level extends Phaser.Scene {
     });
     //Ball and border collider
     this.physics.add.collider(this.ballsGroup, this.borderGroup, (ball, border) => {
+      this.input.keyboard.enabled = true;
+      this.interactiveArea.setInteractive();
       switch(border.name){
         case "rectangle_1":
           ball.setPosition(ball.x, ball.y - 14);
@@ -326,15 +322,30 @@ class Level extends Phaser.Scene {
     });
     //IndexBall and holes collider
     this.physics.add.collider(this.indexBall, this.holesGroup, () => {
+      this.input.keyboard.enabled = false;
+      this.interactiveArea.disableInteractive();
       nMove = 0;
       nScore = 0;
-      nRetryCount -= 1;
+      if(nRetryCount > 0){
+        nRetryCount -= 1;
+      }
+      else{
+        nRetryCount = 3;
+        this.scene.stop("Level");
+        this.scene.start("LevelUp");
+      }
       this.indexBall.setScale(1, 1);
       this.indexBall.destroy();
       this.tryAgainText = this.add.text(971, 500, "Try Again");
       this.tryAgainText.setFontFamily("Alfa Slab One").setOrigin(0.5, 0.5).setFontSize(60).setName("Try Again").setAngle(-10);
       this.oTweenManager.popUpAnimation(this.tryAgainText, 350);
     });
+
+    // masking 
+		let settingShape = this.make.graphics();
+		settingShape.fillEllipse(1300, 150, 150, 200, 32);
+		const settingMask = settingShape.createGeometryMask();
+		this.container_setting.setMask(settingMask);
 
     let shape = this.make.graphics();
     shape.fillRect(760, 262, 420, 535);
@@ -348,9 +359,11 @@ class Level extends Phaser.Scene {
     setTimeout(() => {
       if (nLevelCount == 11) {
         nLevelCount = 1;
+        nRetryCount = 3;
         this.scene.stop("Level");
         this.scene.start("LevelUp");
       } else {
+        this.input.keyboard.enabled = false;
         this.scene.restart("Level");
       }
     }, 300);
@@ -404,19 +417,19 @@ class Level extends Phaser.Scene {
 
   // Scroller for mobile user
   scroll() {
-    interactiveArea = this.table;
-    interactiveArea.setOrigin(0.5);
-    interactiveArea.setInteractive();
+    this.interactiveArea = this.table;
+    this.interactiveArea.setOrigin(0.5);
+    this.interactiveArea.setInteractive();
 
     let dragStartX = 0;
     let dragStartY = 0;
 
-    interactiveArea.on("pointerdown", (pointer) => {
+    this.interactiveArea.on("pointerdown", (pointer) => {
       dragStartX = pointer.x;
       dragStartY = pointer.y;
     });
 
-    interactiveArea.on("pointerup", (pointer) => {
+    this.interactiveArea.on("pointerup", (pointer) => {
       const dragEndX = pointer.x;
       const dragEndY = pointer.y;
 
@@ -454,22 +467,22 @@ class Level extends Phaser.Scene {
     switch (swipeSide) {
       case "Left":
         this.ballMovementDirection(-180, -1500, 0, 1, 0.6);
-        interactiveArea.disableInteractive();
+        this.interactiveArea.disableInteractive();
         break;
 
       case "Right":
         this.ballMovementDirection(0, 1500, 0, 1, 0.6);
-        interactiveArea.disableInteractive();
+        this.interactiveArea.disableInteractive();
         break;
 
       case "Up":
         this.ballMovementDirection(-90, 0, -1500, 0.6, 1);
-        interactiveArea.disableInteractive();
+        this.interactiveArea.disableInteractive();
         break;
 
       case "Down":
          this.ballMovementDirection(-270, 0, 1500, 0.6, 1);
-        interactiveArea.disableInteractive();
+        this.interactiveArea.disableInteractive();
         break;
     }
   }
@@ -486,7 +499,14 @@ class Level extends Phaser.Scene {
     this.arrow.setPosition(this.indexBall.x, this.indexBall.y).setAngle(angle).setVisible(true);
 
     if(nMove > nScore + 3){
-      this.oTweenManager.shakeAnimation();
+      if(nRetryCount == 0){
+        nRetryCount = 3;
+        this.scene.stop("Level");
+        this.scene.start("LevelUp");
+      }
+      else{
+        this.oTweenManager.shakeAnimation();
+      }
     }  
 
     setTimeout(() => {
@@ -499,16 +519,16 @@ class Level extends Phaser.Scene {
     setTimeout(() => {
       switch (angle) {
         case -90:
-          this.indexBall.setPosition(this.indexBall.x, this.indexBall.y + 14);
+          this.indexBall.setPosition(this.indexBall.x, this.indexBall.y + 12);
           break;
         case -270:
-          this.indexBall.setPosition(this.indexBall.x, this.indexBall.y - 14);
+          this.indexBall.setPosition(this.indexBall.x, this.indexBall.y - 12);
           break;
         case -180:
           this.indexBall.setPosition(this.indexBall.x + 14, this.indexBall.y);
           break;
         case 0:
-          this.indexBall.setPosition(this.indexBall.x - 14, this.indexBall.y);
+          this.indexBall.setPosition(this.indexBall.x - 17, this.indexBall.y);
       }
     }, 300);
   }
