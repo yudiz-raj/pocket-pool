@@ -330,9 +330,11 @@ class Level extends Phaser.Scene {
         nRetryCount -= 1;
       }
       else{
+        nLevelCount = 1;
         nRetryCount = 3;
         this.scene.stop("Level");
-        this.scene.start("LevelUp");
+        let win = false
+        this.scene.start("LevelUp", {win});
       }
       this.indexBall.setScale(1, 1);
       this.indexBall.destroy();
@@ -361,7 +363,8 @@ class Level extends Phaser.Scene {
         nLevelCount = 1;
         nRetryCount = 3;
         this.scene.stop("Level");
-        this.scene.start("LevelUp");
+        let win = true;
+        this.scene.start("LevelUp", {win});
       } else {
         this.input.keyboard.enabled = false;
         this.scene.restart("Level");
@@ -500,9 +503,11 @@ class Level extends Phaser.Scene {
 
     if(nMove > nScore + 3){
       if(nRetryCount == 0){
+        nLevelCount = 1;
         nRetryCount = 3;
         this.scene.stop("Level");
-        this.scene.start("LevelUp");
+        let win = false;
+        this.scene.start("LevelUp", {win});
       }
       else{
         this.oTweenManager.shakeAnimation();

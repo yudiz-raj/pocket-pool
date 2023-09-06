@@ -216,6 +216,11 @@
                 "url": "assets/images/winning-screen/winning-bg.png",
                 "type": "image",
                 "key": "winning-bg"
+            },
+            {
+                "url": "assets/images/You-Lose.png",
+                "type": "image",
+                "key": "You-Lose"
             }
         ]
     },

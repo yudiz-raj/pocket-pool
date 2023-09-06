@@ -82,9 +82,15 @@ class TweenManager {
     }
 
     winningAnimation(target) {
+        if (target.texture.key == "You-Lose") {
+            this.y = 515;
+        }
+        else {
+            this.y = 440;
+        }
         this.oScene.add.tween({
             targets: target,
-            y: 440,
+            y: this.y,
             ease: "power2",
             duration: 400,
             // yoyo: true,
