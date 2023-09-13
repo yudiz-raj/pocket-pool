@@ -54,7 +54,6 @@ class LevelUp extends Phaser.Scene {
 
 	// Write your code here
 	init(win) {
-		console.log(win.win);
 		this.win = win.win;
 	}
 	create() {
