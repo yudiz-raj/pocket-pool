@@ -366,7 +366,9 @@ class Level extends Phaser.Scene {
         let win = true;
         this.scene.start("LevelUp", {win});
       } else {
-        this.input.keyboard.enabled = false;
+        setTimeout(() => {
+          this.input.keyboard.enabled = false;
+        }, 80);
         this.scene.restart("Level");
       }
     }, 300);
