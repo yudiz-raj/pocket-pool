@@ -113,6 +113,9 @@ class TweenManager {
                     ease: "Power2",
                     yoyo: true,
                     repeate: 2,
+                    onComplete: () => {
+                        this.oScene.container_retry.setAngle(0);
+                    }
                 });
             }
         });
