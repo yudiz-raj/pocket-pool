@@ -64,7 +64,7 @@
                     "id": "17ad2dab-af89-4fdc-a6d1-8d712b175d17",
                     "label": "logo_2",
                     "texture": {
-                        "key": "Logo-2"
+                        "key": "Logo-3"
                     },
                     "x": 926,
                     "y": 277
@@ -81,6 +81,34 @@
                     "y": 311,
                     "scaleX": 0.7,
                     "scaleY": 0.7
+                },
+                {
+                    "type": "Container",
+                    "id": "f06e47d3-3e8c-4bac-8177-7c24ec49c493",
+                    "label": "container_stars",
+                    "scope": "CLASS",
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "62ce8c9c-07b5-4994-8b57-c429329f1e16",
+                            "label": "shine",
+                            "texture": {
+                                "key": "Shine"
+                            },
+                            "x": 727,
+                            "y": 189
+                        },
+                        {
+                            "type": "Image",
+                            "id": "d9bf9e21-8419-4423-a7b0-627b1334defa",
+                            "label": "shine_1",
+                            "texture": {
+                                "key": "Shine"
+                            },
+                            "x": 1096,
+                            "y": 359
+                        }
+                    ]
                 }
             ]
         }

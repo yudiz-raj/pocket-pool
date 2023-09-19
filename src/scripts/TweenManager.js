@@ -42,6 +42,17 @@ class TweenManager {
         })
     }
 
+    starAnimation() {
+        this.oScene.add.tween({
+            targets: this.oScene.container_stars.list,
+            scaleX: 1.5,
+            scaleY: 1.5,
+            duration: 500,
+            yoyo: true,
+            repeat: -1
+        })
+    }
+
     settingMaskAnimation() {
         this.oScene.setting_button.disableInteractive();
         if (this.oScene.container_setting.y == 145) {

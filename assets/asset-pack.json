@@ -113,6 +113,11 @@
                 "key": "Logo-2"
             },
             {
+                "url": "assets/images/Logo-3.png",
+                "type": "image",
+                "key": "Logo-3"
+            },
+            {
                 "url": "assets/images/multiply-icon.png",
                 "type": "image",
                 "key": "multiply-icon"
@@ -136,6 +141,11 @@
                 "url": "assets/images/Settings.png",
                 "type": "image",
                 "key": "Settings"
+            },
+            {
+                "url": "assets/images/Shine.png",
+                "type": "image",
+                "key": "Shine"
             },
             {
                 "url": "src/scripts/SocketManager.js",

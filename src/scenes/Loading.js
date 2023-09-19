@@ -41,7 +41,7 @@ class Loading extends Phaser.Scene {
 		body.add(stick);
 
 		// logo_2
-		const logo_2 = this.add.image(926, 277, "Logo-2");
+		const logo_2 = this.add.image(926, 277, "Logo-3");
 		body.add(logo_2);
 
 		// white_Ball
@@ -50,10 +50,23 @@ class Loading extends Phaser.Scene {
 		white_Ball.scaleY = 0.7;
 		body.add(white_Ball);
 
+		// container_stars
+		const container_stars = this.add.container(0, 0);
+		body.add(container_stars);
+
+		// shine
+		const shine = this.add.image(727, 189, "Shine");
+		container_stars.add(shine);
+
+		// shine_1
+		const shine_1 = this.add.image(1096, 359, "Shine");
+		container_stars.add(shine_1);
+
 		this.playButton = playButton;
 		this.container_playButton = container_playButton;
 		this.stick = stick;
 		this.white_Ball = white_Ball;
+		this.container_stars = container_stars;
 
 		this.events.emit("scene-awake");
 	}
@@ -66,6 +79,8 @@ class Loading extends Phaser.Scene {
 	stick;
 	/** @type {Phaser.GameObjects.Image} */
 	white_Ball;
+	/** @type {Phaser.GameObjects.Container} */
+	container_stars;
 
 	/* START-USER-CODE */
 
@@ -77,6 +92,7 @@ class Loading extends Phaser.Scene {
 		this.oTweenManager = new TweenManager(this);
 
 		this.oTweenManager.loadingAnimation();
+		this.oTweenManager.starAnimation();
 		this.playButton.setInteractive().on("pointerdown", () => {
 			this.oTweenManager.popUpAnimation(this.container_playButton, 80);
 			setTimeout(() => {
