@@ -3,6 +3,7 @@ let nMove = 0;
 let nScore = 0;
 let nLevelCount = 1;
 let nRetryCount = 3;
+let nShakeAnimation = 0;
 /* START OF COMPILED CODE */
 
 class Level extends Phaser.Scene {
@@ -99,8 +100,12 @@ class Level extends Phaser.Scene {
 		const container_holes = this.add.container(0, 0);
 		body.add(container_holes);
 
+		// container_balls
+		const container_balls = this.add.container(0, 0);
+		body.add(container_balls);
+
 		// container_retry
-		const container_retry = this.add.container(960.5487956409165, 968.5408182439949);
+		const container_retry = this.add.container(960, 973);
 		container_retry.name = "container_retry";
 		body.add(container_retry);
 
@@ -167,6 +172,7 @@ class Level extends Phaser.Scene {
 		this.levelNumber = levelNumber;
 		this.table = table;
 		this.container_holes = container_holes;
+		this.container_balls = container_balls;
 		this.retryButton = retryButton;
 		this.retryCount = retryCount;
 		this.container_retry = container_retry;
@@ -187,6 +193,8 @@ class Level extends Phaser.Scene {
 	table;
 	/** @type {Phaser.GameObjects.Container} */
 	container_holes;
+	/** @type {Phaser.GameObjects.Container} */
+	container_balls;
 	/** @type {Phaser.GameObjects.Image} */
 	retryButton;
 	/** @type {Phaser.GameObjects.Text} */
@@ -232,10 +240,12 @@ class Level extends Phaser.Scene {
       this.oTweenManager.settingMaskAnimation();
     })
 
+    this.scene.bringToTop(this.container_retry);
     this.retryButton.on("pointerdown", () => {
       if (nRetryCount > 0) {
         nMove = 0;
         nScore = 0;
+        nShakeAnimation = 0;
         this.oTweenManager.popUpAnimation(this.container_retry, 80);
         nRetryCount -= 1;
         this.retryCount.setText(nRetryCount);
@@ -272,8 +282,13 @@ class Level extends Phaser.Scene {
     this.physics.add.collider(this.indexBall, this.borderGroup, () => {
       this.indexBall.setScale(1, 1);
       this.indexBall.setVelocity(0, 0);
-      this.input.keyboard.enabled = true;
-      this.interactiveArea.setInteractive();
+      if (nShakeAnimation <= 3) {
+        this.interactiveArea.setInteractive();
+        this.input.keyboard.enabled = true;
+      }
+      else {
+        this.oTweenManager.retryButtonUpAnimation();
+      }
     });
 
     // IndexBall and ball collider
@@ -303,8 +318,13 @@ class Level extends Phaser.Scene {
     });
     //Ball and border collider
     this.physics.add.collider(this.ballsGroup, this.borderGroup, (ball, border) => {
-      this.input.keyboard.enabled = true;
-      this.interactiveArea.setInteractive();
+      if (nShakeAnimation <= 3) {
+        this.interactiveArea.setInteractive();
+        this.input.keyboard.enabled = true;
+      }
+      else {
+        this.oTweenManager.retryButtonUpAnimation();
+      }
       switch(border.name){
         case "rectangle_1":
           ball.setPosition(ball.x, ball.y - 14);
@@ -384,6 +404,7 @@ class Level extends Phaser.Scene {
       if (this.ballsData[`ball_${i}`]) {
         this.ball = this.physics.add.sprite(this.ballsData[`ball_${i}`].x,this.ballsData[`ball_${i}`].y,`ball_${i}`).setName(i - 1);
         this.ballsGroup.add(this.ball);
+        this.container_balls.add(this.ball);
       } else {
         this.indexBall = this.physics.add.sprite(this.ballsData.indexBall.x,this.ballsData.indexBall.y,"W-Ball");
         this.indexBall.body.setSize(50, 50);
@@ -512,6 +533,7 @@ class Level extends Phaser.Scene {
         this.scene.start("LevelUp", {win});
       }
       else{
+        nShakeAnimation++;
         this.oTweenManager.shakeAnimation();
       }
     }  

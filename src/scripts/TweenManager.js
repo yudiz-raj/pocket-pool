@@ -104,7 +104,6 @@ class TweenManager {
             y: this.y,
             ease: "power2",
             duration: 400,
-            // yoyo: true,
         });
     }
 
@@ -129,6 +128,15 @@ class TweenManager {
                     }
                 });
             }
+        });
+    }
+    
+    retryButtonUpAnimation(){
+        this.oScene.add.tween({
+            targets: this.oScene.container_retry,
+            y: 744,
+            ease: "power2",
+            duration: 600,
         });
     }
 }
