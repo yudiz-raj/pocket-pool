@@ -137,6 +137,10 @@ class TweenManager {
             y: 744,
             ease: "power2",
             duration: 600,
+            onComplete: () => {
+                this.oScene.input.keyboard.enabled = false;
+                this.oScene.interactiveArea.disableInteractive();
+            }
         });
     }
 }
