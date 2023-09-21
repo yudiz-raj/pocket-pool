@@ -100,6 +100,10 @@ class Level extends Phaser.Scene {
 		const container_holes = this.add.container(0, 0);
 		body.add(container_holes);
 
+		// container_indexBall
+		const container_indexBall = this.add.container(0, 0);
+		body.add(container_indexBall);
+
 		// container_balls
 		const container_balls = this.add.container(0, 0);
 		body.add(container_balls);
@@ -172,6 +176,7 @@ class Level extends Phaser.Scene {
 		this.levelNumber = levelNumber;
 		this.table = table;
 		this.container_holes = container_holes;
+		this.container_indexBall = container_indexBall;
 		this.container_balls = container_balls;
 		this.retryButton = retryButton;
 		this.retryCount = retryCount;
@@ -193,6 +198,8 @@ class Level extends Phaser.Scene {
 	table;
 	/** @type {Phaser.GameObjects.Container} */
 	container_holes;
+	/** @type {Phaser.GameObjects.Container} */
+	container_indexBall;
 	/** @type {Phaser.GameObjects.Container} */
 	container_balls;
 	/** @type {Phaser.GameObjects.Image} */
@@ -408,6 +415,7 @@ class Level extends Phaser.Scene {
       } else {
         this.indexBall = this.physics.add.sprite(this.ballsData.indexBall.x,this.ballsData.indexBall.y,"W-Ball");
         this.indexBall.body.setSize(50, 50);
+        this.container_indexBall.add(this.indexBall);
       }
     }
 

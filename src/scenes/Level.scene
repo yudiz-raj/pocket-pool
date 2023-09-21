@@ -163,6 +163,12 @@
                 },
                 {
                     "type": "Container",
+                    "id": "ad4a5300-2737-43d7-afce-39407553bc33",
+                    "label": "container_indexBall",
+                    "scope": "CLASS"
+                },
+                {
+                    "type": "Container",
                     "id": "ad3c3406-1aba-4f99-9c41-40d663396fde",
                     "label": "container_balls",
                     "scope": "CLASS"
