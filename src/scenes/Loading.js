@@ -93,7 +93,15 @@ class Loading extends Phaser.Scene {
 
 		this.oTweenManager.loadingAnimation();
 		this.oTweenManager.starAnimation();
-		this.playButton.setInteractive().on("pointerdown", () => {
+		this.playButton.setInteractive();
+		this.playButton.on('pointerover', () => {
+			this.playButton.setScale(1.05);
+		});
+		this.playButton.on('pointerout', () => {
+			this.playButton.setScale(1);
+		});
+		this.playButton.on("pointerdown", () => {
+			this.playButton.setScale(1);
 			this.oTweenManager.popUpAnimation(this.container_playButton, 80);
 			setTimeout(() => {
 				this.scene.stop("Loading");

@@ -60,11 +60,19 @@ class LevelUp extends Phaser.Scene {
 		this.editorCreate();
 		this.oSoundManager = new SoundManager(this);
 		this.oTweenManager = new TweenManager(this);
-		if(this.win == false){
+		if (this.win == false) {
 			this.congratulations.setTexture("You-Lose").setX(980);
 		}
 		this.oTweenManager.winningAnimation(this.congratulations);
+		this.replayButton.setInteractive();
+		this.replayButton.on('pointerover', () => {
+			this.replayButton.setScale(1.05);
+		});
+		this.replayButton.on('pointerout', () => {
+			this.replayButton.setScale(1);
+		});
 		this.replayButton.setInteractive().on("pointerdown", () => {
+			this.replayButton.setScale(1);
 			this.oTweenManager.popUpAnimation(this.container_replay, 80);
 		})
 	}
