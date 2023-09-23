@@ -245,9 +245,11 @@ class Level extends Phaser.Scene {
     this.levelSelecter();
     this.setting_button.setInteractive();
     this.setting_button.on('pointerover', () => {
+      this.input.setDefaultCursor('pointer');
 			this.setting_button.setScale(1.3);
 		});
 		this.setting_button.on('pointerout', () => {
+      this.input.setDefaultCursor('default');
 			this.setting_button.setScale(1.2);
 		});
     this.setting_button.on("pointerdown",()=>{
@@ -257,9 +259,11 @@ class Level extends Phaser.Scene {
 
     this.scene.bringToTop(this.container_retry);
     this.retryButton.on('pointerover', () => {
+      this.input.setDefaultCursor('pointer');
 			this.container_retry.setScale(1.05);
 		});
 		this.retryButton.on('pointerout', () => {
+      this.input.setDefaultCursor('default');
 			this.container_retry.setScale(1);
 		});
     this.retryButton.on("pointerdown", () => {

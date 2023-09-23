@@ -66,9 +66,11 @@ class LevelUp extends Phaser.Scene {
 		this.oTweenManager.winningAnimation(this.congratulations);
 		this.replayButton.setInteractive();
 		this.replayButton.on('pointerover', () => {
+			this.input.setDefaultCursor('pointer');
 			this.replayButton.setScale(1.05);
 		});
 		this.replayButton.on('pointerout', () => {
+			this.input.setDefaultCursor('default');
 			this.replayButton.setScale(1);
 		});
 		this.replayButton.setInteractive().on("pointerdown", () => {
