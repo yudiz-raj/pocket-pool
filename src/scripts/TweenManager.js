@@ -15,7 +15,6 @@ class TweenManager {
                 if (target.name == "container_playButton") {
                     this.oScene.scene.stop("Loading");
                 }
-
                 if (target.name == "Try Again" || target.name == "container_retry") {
                     setTimeout(() => {
                         this.oScene.input.keyboard.enabled = true;
@@ -25,7 +24,7 @@ class TweenManager {
                 }
                 if (target.name == "container_replay") {
                     this.oScene.scene.stop("LevelUp");
-                    this.oScene.scene.start("Loading");
+                    this.oScene.scene.start("Level");
                 }
             }
         });
@@ -80,23 +79,20 @@ class TweenManager {
             duration: 300,
             onComplete: () => {
                 this.oScene.info_button.setInteractive();
-                this.oScene.sound_button.setInteractive().on("pointerdown", () => {
-                    if (this.oScene.sound_button.texture.key == "Sound") {
-                        this.oScene.sound_button.setTexture("Mute");
-                    }
-                    else {
-                        this.oScene.sound_button.setTexture("Sound");
-                    }
-                });
+                this.oScene.sound_button.setInteractive();
             }
         });
     }
 
     winningAnimation(target) {
         if (target.texture.key == "You-Lose") {
+            this.oScene.oSoundManager.playSound(this.oScene.oSoundManager.tryAgainSound, false);
             this.y = 515;
         }
         else {
+            if (JSON.parse(localStorage.getItem("isAudioOn"))) {
+                this.oScene.oSoundManager.playSound(this.oScene.oSoundManager.congratulationSound, false);
+            }
             this.y = 440;
         }
         this.oScene.add.tween({
@@ -130,8 +126,8 @@ class TweenManager {
             }
         });
     }
-    
-    retryButtonUpAnimation(){
+
+    retryButtonUpAnimation() {
         this.oScene.add.tween({
             targets: this.oScene.container_retry,
             y: 744,

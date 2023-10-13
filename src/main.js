@@ -31,6 +31,7 @@ const init = () => {
 			}
 		}
 	});
+	localStorage.setItem("isAudioOn", true);
 	game.scene.add("Preload", Preload);
 	game.scene.add("Boot", Boot, true);
 };

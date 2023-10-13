@@ -85,12 +85,20 @@ class Loading extends Phaser.Scene {
 	/* START-USER-CODE */
 
 	// Write your code here
+	setAudio() {
+		const isAudioOn = (flag) => {
+			this.oSoundManager.playSound(this.oSoundManager.backgroundMusic, true);
+			localStorage.setItem("isAudioOn", flag);
+			this.sound.mute = !flag;
+		}
+		isAudioOn(JSON.parse(localStorage.getItem("isAudioOn")));
+	}
 
 	create() {
 		this.editorCreate();
 		this.oSoundManager = new SoundManager(this);
 		this.oTweenManager = new TweenManager(this);
-
+		this.setAudio();
 		this.oTweenManager.loadingAnimation();
 		this.oTweenManager.starAnimation();
 		this.playButton.setInteractive();
@@ -103,6 +111,8 @@ class Loading extends Phaser.Scene {
 			this.playButton.setScale(1);
 		});
 		this.playButton.on("pointerdown", () => {
+			this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
+			this.input.setDefaultCursor('default');
 			this.playButton.setScale(1);
 			this.oTweenManager.popUpAnimation(this.container_playButton, 80);
 			setTimeout(() => {

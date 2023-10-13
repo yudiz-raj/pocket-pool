@@ -7,6 +7,13 @@
                 "key": "arrow"
             },
             {
+                "url": [
+                    "assets/sounds/background.mp3"
+                ],
+                "type": "audio",
+                "key": "background"
+            },
+            {
                 "url": "assets/images/background.png",
                 "type": "image",
                 "key": "Background"
@@ -47,28 +54,35 @@
                 "key": "ball_7"
             },
             {
-                "url": [
-                    "assets/sounds/ballHitting.mp3"
-                ],
-                "type": "audio",
-                "key": "ballHitting"
-            },
-            {
                 "url": "assets/images/Button.png",
                 "type": "image",
                 "key": "Button"
             },
             {
                 "url": [
-                    "assets/sounds/Click.mp3"
+                    "assets/sounds/click.mp3"
                 ],
                 "type": "audio",
-                "key": "Click"
+                "key": "click"
+            },
+            {
+                "url": [
+                    "assets/sounds/congratulation.mp3"
+                ],
+                "type": "audio",
+                "key": "congratulation"
             },
             {
                 "url": "assets/images/winning-screen/Congratulations.png",
                 "type": "image",
                 "key": "Congratulations"
+            },
+            {
+                "url": [
+                    "assets/sounds/cueBall-inHole.mp3"
+                ],
+                "type": "audio",
+                "key": "cueBall-inHole"
             },
             {
                 "url": "assets/images/Info.png",
@@ -86,6 +100,13 @@
                 "key": "Level-Board"
             },
             {
+                "url": [
+                    "assets/sounds/level-change.mp3"
+                ],
+                "type": "audio",
+                "key": "level-change"
+            },
+            {
                 "url": "src/scripts/LevelManager.js",
                 "type": "script",
                 "key": "LevelManager"
@@ -94,13 +115,6 @@
                 "url": "src/scenes/LevelUp.js",
                 "type": "sceneFile",
                 "key": "LevelUp"
-            },
-            {
-                "url": [
-                    "assets/sounds/LevelWin.mp3"
-                ],
-                "type": "audio",
-                "key": "LevelWin"
             },
             {
                 "url": "src/scenes/Loading.js",
@@ -148,6 +162,13 @@
                 "key": "Shine"
             },
             {
+                "url": [
+                    "assets/sounds/shot-play.mp3"
+                ],
+                "type": "audio",
+                "key": "shot-play"
+            },
+            {
                 "url": "src/scripts/SocketManager.js",
                 "type": "script",
                 "key": "SocketManager"
@@ -188,6 +209,13 @@
                 "key": "Table"
             },
             {
+                "url": [
+                    "assets/sounds/try-again.mp3"
+                ],
+                "type": "audio",
+                "key": "try-again"
+            },
+            {
                 "url": "assets/images/Try-again.png",
                 "type": "image",
                 "key": "Try-again"
@@ -201,6 +229,13 @@
                 "url": "assets/images/Balls/W-Ball.png",
                 "type": "image",
                 "key": "W-Ball"
+            },
+            {
+                "url": [
+                    "assets/sounds/wall-hit.mp3"
+                ],
+                "type": "audio",
+                "key": "wall-hit"
             },
             {
                 "url": "assets/images/White-Background.png",

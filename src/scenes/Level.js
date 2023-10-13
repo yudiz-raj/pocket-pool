@@ -222,6 +222,18 @@ class Level extends Phaser.Scene {
 	/* START-USER-CODE */
 
   // Write your code here
+  setAudio() {
+		const isAudioOn = (flag) => {
+			flag ? this.sound_button.setTexture("Sound") : this.sound_button.setTexture("Mute");
+			localStorage.setItem("isAudioOn", flag);
+			this.sound.mute = !flag;
+		}
+		isAudioOn(JSON.parse(localStorage.getItem("isAudioOn")))
+		this.sound_button.on('pointerdown', () => { 
+      this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
+      isAudioOn(!JSON.parse(localStorage.getItem("isAudioOn")));
+    });
+	}
 
   create() {
     this.editorCreate();
@@ -229,7 +241,8 @@ class Level extends Phaser.Scene {
     this.oLevelManager = new LevelManager(this);
     this.oSoundManager = new SoundManager(this);
     this.oTweenManager = new TweenManager(this);
-
+    this.setAudio();
+    
     this.ballsGroup = this.add.group();
     this.holesGroup = this.add.group();
     this.borderGroup = this.add.group();
@@ -254,8 +267,9 @@ class Level extends Phaser.Scene {
 		});
     this.setting_button.on("pointerdown",()=>{
       this.setting_button.setScale(1.2);
+      this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
       this.oTweenManager.settingMaskAnimation();
-    })
+    });
 
     this.scene.bringToTop(this.container_retry);
     this.retryButton.on('pointerover', () => {
@@ -267,6 +281,7 @@ class Level extends Phaser.Scene {
 			this.container_retry.setScale(1);
 		});
     this.retryButton.on("pointerdown", () => {
+      this.oSoundManager.playSound(this.oSoundManager.clickSound, false);
       this.container_retry.setScale(1);
       if (nRetryCount > 0) {
         nMove = 0;
@@ -306,6 +321,7 @@ class Level extends Phaser.Scene {
 
     // IndexBall and border collider
     this.physics.add.collider(this.indexBall, this.borderGroup, () => {
+			this.oSoundManager.playSound(this.oSoundManager.ballHittingWallSound, false);
       this.indexBall.setScale(1, 1);
       this.indexBall.setVelocity(0, 0);
       if (nShakeAnimation <= 3) {
@@ -319,14 +335,15 @@ class Level extends Phaser.Scene {
 
     // IndexBall and ball collider
     this.physics.add.collider( this.indexBall, this.ballsGroup, (indexBall, ball) => {
-        this.indexBall.setVelocity(0, 0);
-        this.indexBall.setScale(1, 1);
-      }
-    );
+			this.oSoundManager.playSound(this.oSoundManager.ballHittingWallSound, false);
+      this.indexBall.setVelocity(0, 0);
+      this.indexBall.setScale(1, 1);
+    });
     // Ball and ball collider
     this.physics.add.collider(this.ballsGroup, this.ballsGroup);
     // Ball and hole collider
     this.physics.add.collider(this.ballsGroup, this.holesGroup, (number) => {
+      this.oSoundManager.playSound(this.oSoundManager.ballFallInHoleSound, false);
       this.ballsGroup.children.entries.forEach((ball) => {
         if (ball.name == number.name) {
           ball.destroy();
@@ -344,6 +361,7 @@ class Level extends Phaser.Scene {
     });
     //Ball and border collider
     this.physics.add.collider(this.ballsGroup, this.borderGroup, (ball, border) => {
+		  this.oSoundManager.playSound(this.oSoundManager.ballHittingWallSound, false);
       if (nShakeAnimation <= 3) {
         this.interactiveArea.setInteractive();
         this.input.keyboard.enabled = true;
@@ -368,6 +386,8 @@ class Level extends Phaser.Scene {
     });
     //IndexBall and holes collider
     this.physics.add.collider(this.indexBall, this.holesGroup, () => {
+			this.oSoundManager.playSound(this.oSoundManager.ballFallInHoleSound, false);
+			this.oSoundManager.playSound(this.oSoundManager.tryAgainSound, false);
       this.input.keyboard.enabled = false;
       this.interactiveArea.disableInteractive();
       nMove = 0;
@@ -376,6 +396,7 @@ class Level extends Phaser.Scene {
         nRetryCount -= 1;
       }
       else{
+        this.oSoundManager.stopSound(this.oSoundManager.backgroundMusic, false);
         nLevelCount = 1;
         nRetryCount = 3;
         this.scene.stop("Level");
@@ -406,6 +427,7 @@ class Level extends Phaser.Scene {
     nScore = 0;
     setTimeout(() => {
       if (nLevelCount == 11) {
+        this.oSoundManager.stopSound(this.oSoundManager.backgroundMusic, false);
         nLevelCount = 1;
         nRetryCount = 3;
         this.scene.stop("Level");
@@ -542,6 +564,7 @@ class Level extends Phaser.Scene {
 
   // set angle, velocity and scale for ball
   ballMovementDirection(angle, velocityX, velocityY, scaleX, scaleY) {
+    this.oSoundManager.playSound(this.oSoundManager.shotSound, false);
     nMove++;
     this.input.keyboard.enabled = false;
     this.retryButton.setInteractive();
@@ -553,6 +576,7 @@ class Level extends Phaser.Scene {
 
     if(nMove > nScore + 3){
       if(nRetryCount == 0){
+        this.oSoundManager.stopSound(this.oSoundManager.backgroundMusic, false);
         nLevelCount = 1;
         nRetryCount = 3;
         this.scene.stop("Level");
