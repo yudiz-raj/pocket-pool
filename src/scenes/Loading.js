@@ -20,7 +20,7 @@ class Loading extends Phaser.Scene {
 		const body = this.add.container(0, 0);
 
 		// splash_screen
-		const splash_screen = this.add.image(960, 540, "Splash-screen-2");
+		const splash_screen = this.add.image(960, 540, "table-1");
 		body.add(splash_screen);
 
 		// container_playButton

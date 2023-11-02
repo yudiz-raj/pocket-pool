@@ -19,9 +19,9 @@ class LevelUp extends Phaser.Scene {
 		// body
 		const body = this.add.container(0, 0);
 
-		// winning_bg
-		const winning_bg = this.add.image(960, 540, "winning-bg");
-		body.add(winning_bg);
+		// table_2
+		const table_2 = this.add.image(978, 540, "Table-2");
+		body.add(table_2);
 
 		// container_replay
 		const container_replay = this.add.container(960, 991);
@@ -57,6 +57,7 @@ class LevelUp extends Phaser.Scene {
 		this.win = win.win;
 	}
 	create() {
+		document.body.style.backgroundImage = 'url("assets/images/Background-3.png")';
 		this.editorCreate();
 		this.oSoundManager = new SoundManager(this);
 		this.oTweenManager = new TweenManager(this);

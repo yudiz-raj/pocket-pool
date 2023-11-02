@@ -2,9 +2,29 @@
     "section1": {
         "files": [
             {
+                "url": "assets/images/Logo-2.png",
+                "type": "image",
+                "key": "Logo-2"
+            },
+            {
                 "url": "assets/images/preload-screen.png",
                 "type": "image",
                 "key": "preload-screen"
+            },
+            {
+                "url": "assets/images/stick.png",
+                "type": "image",
+                "key": "stick"
+            },
+            {
+                "url": "assets/images/table-1.png",
+                "type": "image",
+                "key": "table-1"
+            },
+            {
+                "url": "assets/images/White-Ball.png",
+                "type": "image",
+                "key": "White-Ball"
             }
         ]
     },

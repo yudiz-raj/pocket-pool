@@ -16,12 +16,12 @@
             "list": [
                 {
                     "type": "Image",
-                    "id": "0e8362b2-1d21-43ab-934e-2bc363e2e583",
-                    "label": "winning_bg",
+                    "id": "04ef7cbc-65be-4611-9647-1bce91757c17",
+                    "label": "table_2",
                     "texture": {
-                        "key": "winning-bg"
+                        "key": "Table-2"
                     },
-                    "x": 960,
+                    "x": 978,
                     "y": 540
                 },
                 {

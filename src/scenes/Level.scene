@@ -16,13 +16,13 @@
             "list": [
                 {
                     "type": "Image",
-                    "id": "7ce9539f-31c0-4605-b98a-481d852ab59b",
-                    "label": "background",
+                    "id": "10090d0e-5274-4088-8d89-04e5609642cf",
+                    "label": "carpet",
                     "texture": {
-                        "key": "Background"
+                        "key": "carpet"
                     },
-                    "x": 960,
-                    "y": 540
+                    "x": 966,
+                    "y": 543
                 },
                 {
                     "type": "Container",

@@ -17,7 +17,7 @@
             "id": "cbb43e07-e3f4-4e10-9f92-e8792046b5ac",
             "label": "preload_screen",
             "texture": {
-                "key": "preload-screen"
+                "key": "table-1"
             },
             "x": 960,
             "y": 540
@@ -36,6 +36,42 @@
             "text": "0%",
             "fontFamily": "Alfa Slab One",
             "fontSize": "54px"
+        },
+        {
+            "type": "Image",
+            "id": "1533992c-e669-4f3a-a8cb-f0c93fc34554",
+            "label": "stick",
+            "texture": {
+                "key": "stick"
+            },
+            "x": 940,
+            "y": 300,
+            "scaleX": 1.8,
+            "scaleY": 2.3,
+            "angle": 163.5
+        },
+        {
+            "type": "Image",
+            "id": "967b3933-afb4-47b0-ae65-ad4573aaa823",
+            "label": "logo_2",
+            "texture": {
+                "key": "Logo-2"
+            },
+            "x": 926,
+            "y": 277
+        },
+        {
+            "type": "Image",
+            "id": "dee0cedc-315c-43e5-ac82-9c3c36b3e107",
+            "label": "white_Ball_1",
+            "scope": "CLASS",
+            "texture": {
+                "key": "White-Ball"
+            },
+            "x": 989,
+            "y": 311,
+            "scaleX": 0.7,
+            "scaleY": 0.7
         }
     ],
     "plainObjects": [],

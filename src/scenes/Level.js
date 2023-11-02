@@ -22,9 +22,9 @@ class Level extends Phaser.Scene {
 		// body
 		const body = this.add.container(0, 0);
 
-		// background
-		const background = this.add.image(960, 540, "Background");
-		body.add(background);
+		// carpet
+		const carpet = this.add.image(966, 543, "carpet");
+		body.add(carpet);
 
 		// container_border
 		const container_border = this.add.container(0, 0);
@@ -236,13 +236,14 @@ class Level extends Phaser.Scene {
 	}
 
   create() {
+    document.body.style.backgroundImage = 'url("assets/images/Background.png")';
     this.editorCreate();
 
     this.oLevelManager = new LevelManager(this);
     this.oSoundManager = new SoundManager(this);
     this.oTweenManager = new TweenManager(this);
     this.setAudio();
-    
+
     this.ballsGroup = this.add.group();
     this.holesGroup = this.add.group();
     this.borderGroup = this.add.group();

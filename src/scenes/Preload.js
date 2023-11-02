@@ -23,7 +23,7 @@ class Preload extends Phaser.Scene {
 	editorCreate() {
 
 		// preload_screen
-		this.add.image(960, 540, "preload-screen");
+		this.add.image(960, 540, "table-1");
 
 		// progress
 		const progress = this.add.text(960, 988, "", {});
@@ -31,11 +31,30 @@ class Preload extends Phaser.Scene {
 		progress.text = "0%";
 		progress.setStyle({ "fontFamily": "Alfa Slab One", "fontSize": "54px" });
 
+		// stick
+		const stick = this.add.image(940, 300, "stick");
+		stick.scaleX = 1.8;
+		stick.scaleY = 2.3;
+		stick.angle = 163.5;
+
+		// logo_2
+		this.add.image(926, 277, "Logo-2");
+
+		// white_Ball_1
+		const white_Ball_1 = this.add.image(989, 311, "White-Ball");
+		white_Ball_1.scaleX = 0.7;
+		white_Ball_1.scaleY = 0.7;
+
 		// progress (components)
 		new PreloadText(progress);
 
+		this.white_Ball_1 = white_Ball_1;
+
 		this.events.emit("scene-awake");
 	}
+
+	/** @type {Phaser.GameObjects.Image} */
+	white_Ball_1;
 
 	/* START-USER-CODE */
 

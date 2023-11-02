@@ -14,11 +14,6 @@
                 "key": "background"
             },
             {
-                "url": "assets/images/background.png",
-                "type": "image",
-                "key": "Background"
-            },
-            {
                 "url": "assets/images/Balls/Ball-1.png",
                 "type": "image",
                 "key": "ball_1"
@@ -57,6 +52,11 @@
                 "url": "assets/images/Button.png",
                 "type": "image",
                 "key": "Button"
+            },
+            {
+                "url": "assets/images/carpet.png",
+                "type": "image",
+                "key": "carpet"
             },
             {
                 "url": [
@@ -120,11 +120,6 @@
                 "url": "src/scenes/Loading.js",
                 "type": "sceneFile",
                 "key": "Loading"
-            },
-            {
-                "url": "assets/images/Logo-2.png",
-                "type": "image",
-                "key": "Logo-2"
             },
             {
                 "url": "assets/images/Logo-3.png",
@@ -199,14 +194,14 @@
                 "key": "Start"
             },
             {
-                "url": "assets/images/stick.png",
-                "type": "image",
-                "key": "stick"
-            },
-            {
                 "url": "assets/images/Table.png",
                 "type": "image",
                 "key": "Table"
+            },
+            {
+                "url": "assets/images/Table-2.png",
+                "type": "image",
+                "key": "Table-2"
             },
             {
                 "url": [
@@ -241,11 +236,6 @@
                 "url": "assets/images/White-Background.png",
                 "type": "image",
                 "key": "White-Background"
-            },
-            {
-                "url": "assets/images/White-Ball.png",
-                "type": "image",
-                "key": "White-Ball"
             },
             {
                 "url": "assets/images/Wholes/Whole 1.png",
