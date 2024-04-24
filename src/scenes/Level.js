@@ -514,25 +514,19 @@ class Level extends Phaser.Scene {
       const dragX = dragEndX - dragStartX;
       const dragY = dragEndY - dragStartY;
 
-      if (
-        Math.abs(dragX) > Math.abs(dragY) &&
-        Math.abs(dragX) > dragThreshold
-      ) {
-        //Check Y Axis Collision and Continue Movement; Stop at Collision
-        if (dragX > 0) {
-          this.handleScroll("Right");
+      if (Math.abs(dragX) > dragThreshold || Math.abs(dragY) > dragThreshold) {
+        if (Math.abs(dragX) > Math.abs(dragY)) {
+          if (dragX > 0) {
+            this.handleScroll("Right");
+          } else {
+            this.handleScroll("Left");
+          }
         } else {
-          this.handleScroll("Left");
-        }
-      } else if (
-        Math.abs(dragY) > Math.abs(dragX) &&
-        Math.abs(dragY) > dragThreshold
-      ) {
-        //Check X Axis Collision and Continue Movement; Stop at Collision
-        if (dragY > 0) {
-          this.handleScroll("Down");
-        } else {
-          this.handleScroll("Up");
+          if (dragY > 0) {
+            this.handleScroll("Down");
+          } else {
+            this.handleScroll("Up");
+          }
         }
       }
     });
